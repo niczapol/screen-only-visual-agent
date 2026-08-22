@@ -1,0 +1,19 @@
+{
+  "reviewed_at": "2026-07-31",
+  "model": "qwen2.5vl:7b-q4_K_M",
+  "verdict": "pass",
+  "confidence": 0.95,
+  "blocked_crossing_visible": false,
+  "suspicious_detours": [
+    "cyan path crossing magenta nodes"
+  ],
+  "notes": [
+    "The cyan final route passes through magenta rejected ore nodes, which is unexpected."
+  ],
+  "codex_review": {
+    "disposition": "accepted_with_advisory_explained",
+    "explanation": "Magenta marks a rejected ore coordinate, not a blocked terrain cell. The saved route was independently reloaded and all 135 cyclic edges passed line_is_walkable with minimum clearance 1.0.",
+    "validated_edges": 135,
+    "blocked_crossing_count": 0
+  }
+}

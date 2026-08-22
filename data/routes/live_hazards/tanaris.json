@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "zone": "Tanaris",
+  "hazards": [
+    {
+      "kind": "caverns_of_time_gorge_interior",
+      "points": [
+        [62.7, 46.0],
+        [64.5, 43.4],
+        [69.5, 41.8],
+        [74.5, 43.5],
+        [76.0, 48.0],
+        [75.0, 54.0],
+        [71.0, 57.5],
+        [65.0, 59.0],
+        [63.2, 57.0],
+        [62.8, 54.5],
+        [62.8, 51.5],
+        [62.6, 49.0]
+      ],
+      "margin_yards": 12.0,
+      "runtime_margin_x_coord": 0.1739,
+      "runtime_margin_y_coord": 0.2609,
+      "exclude_nodes": true,
+      "reason": "User-corrected exclusion after reviewing the detailed terrain map: retain the ore nodes and safe rail on the western rim, but forbid the dark Caverns of Time gorge interior itself. The lethal visible coordinate 63.53,49.70 is inside this polygon. A local 12-yard planning/runtime margin prevents an accidental mounted/combat drift across the rim without deleting the surrounding mining sector."
+    },
+    {
+      "kind": "the_gaping_chasm_underground_complex",
+      "points": [
+        [47.5, 60.0],
+        [60.8, 60.0],
+        [61.3, 79.5],
+        [47.5, 79.5]
+      ],
+      "margin_yards": 30.0,
+      "exclude_nodes": true,
+      "reason": "Live-validated 2026-08-03, 2026-08-12, 2026-08-13 and 2026-08-16: the route entered The Gaping Chasm and switched to the forbidden subzone. Surface boundaries were observed at 59.13,61.67, 51.09,78.27, 51.19,76.07 and as far west as 48.11,73.69. Exclude the expanded full complex, its western approach clearance and its underground ore records."
+    },
+    {
+      "kind": "broken_pillar_surface_structure",
+      "points": [
+        [50.8, 42.8],
+        [54.2, 42.8],
+        [54.2, 48.0],
+        [50.8, 48.0]
+      ],
+      "margin_yards": 25.0,
+      "exclude_nodes": true,
+      "reason": "Live-validated 2026-08-12: V8 entered the Broken Pillar walls at 52.63,45.21 and the first narrow bypass contacted the outer wall again at 53.77,47.40. Exclude the full structure plus clearance and its enclosed ore records."
+    },
+    {
+      "kind": "the_noxious_lair_underground_complex",
+      "points": [
+        [32.0, 29.0],
+        [40.8, 29.0],
+        [40.8, 39.0],
+        [40.5, 39.0],
+        [41.0, 53.5],
+        [32.0, 53.5]
+      ],
+      "margin_yards": 30.0,
+      "exclude_nodes": true,
+      "reason": "User-approved exclusion 2026-08-03 plus live boundary 2026-08-12 at 35.55,32.63: stay outside The Noxious Lair and its northern surface subzone footprint; its ore records are underground."
+    },
+    {
+      "kind": "dunemaul_compound_hostile_pack",
+      "points": [
+        [34.0, 51.5],
+        [47.0, 51.5],
+        [47.0, 63.0],
+        [34.0, 63.0]
+      ],
+      "margin_yards": 30.0,
+      "exclude_nodes": true,
+      "reason": "Live-validated 2026-08-12: the V11 northern rail crossed the Dunemaul surface pack and died at 37.73,54.96 while several level 46-47 ogres were simultaneously visible. Public classic references place the compound around 41,57; exclude the observed pack plus clearance and route around its southern side."
+    },
+    {
+      "kind": "dunemaul_west_rock_contact",
+      "points": [
+        [30.55, 63.00],
+        [30.83, 63.00],
+        [30.83, 63.34],
+        [30.55, 63.34]
+      ],
+      "margin_yards": 5.0,
+      "exclude_nodes": false,
+      "reason": "Live-validated V12 contact at 30.69,63.18: two bounded runs repeated jump, jump-turn and back-turn without coordinate progress. Treat the local rock/object footprint as a hard planning veto and route around it."
+    },
+    {
+      "kind": "southwest_wreckage_contact",
+      "x": 30.65,
+      "y": 73.82,
+      "radius_yards": 12.0,
+      "margin_yards": 5.0,
+      "exclude_nodes": false,
+      "reason": "Live-validated 2026-08-16: RUN2, RUN3 and RUN4 remained fixed at 30.65,73.82 through jump, jump-turn, back-turn and both committed escape sides. Treat the local object footprint as a hard route-planning veto."
+    }
+  ]
+}

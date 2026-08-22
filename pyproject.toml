@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "screen-vision-agent"
+version = "0.8.27"
+description = "A replay-oriented, screen-only visual autonomy system for a legacy game environment"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Portfolio project"}]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "opencv-python>=4.10.0",
+  "numpy>=1.26.0",
+  "mss>=9.0.0",
+  "pywin32>=306; platform_system == 'Windows'",
+  "pyyaml>=6.0.0",
+  "pytesseract>=0.3.10",
+  "mpyq>=0.2.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0", "pyinstaller>=5.0.0"]
+ml = ["ultralytics>=8.3.0", "pillow>=10.0.0"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

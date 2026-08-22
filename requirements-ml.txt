@@ -1,0 +1,6 @@
+ultralytics>=8.3.0
+pillow>=10.0.0
+
+# Install the PyTorch build appropriate for the local CPU/CUDA environment.
+# Model weights and training media are deliberately not stored in this repo.
+

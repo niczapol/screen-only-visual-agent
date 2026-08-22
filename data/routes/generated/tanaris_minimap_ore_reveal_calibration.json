@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "manual_video_measurement",
+  "recording": "data/human_demo_tanaris_20260802_114252",
+  "trajectory": "data/human_demo_tanaris_20260802_114252/analysis/trajectory.jsonl",
+  "ore_database": "data/routes/source/tanaris_gathermate_nodes.json",
+  "method": "For each clean mining event, inspect the minimap contact sheet backwards and select the first stable saturated-yellow live ore component. Match the mined location to the nearest GatherMate record, then calculate anisotropic WorldMapArea distance from the OCR coordinate trajectory.",
+  "world_map_scale_yards_per_ui_percent": {
+    "x": 69.0,
+    "y": 46.0
+  },
+  "clean_events": [
+    {
+      "mining_event_wall_offset": 136.49,
+      "contact_sheet": "data/human_demo_tanaris_20260802_114252/analysis/ore_event_136.49_minimap.jpg",
+      "matched_node": {
+        "x": 44.06,
+        "y": 25.9,
+        "ore_type": "Small Thorium"
+      },
+      "first_stable_detection_distance_yards": 50.2
+    },
+    {
+      "mining_event_wall_offset": 209.77,
+      "contact_sheet": "data/human_demo_tanaris_20260802_114252/analysis/ore_event_209.77_minimap.jpg",
+      "matched_node": {
+        "x": 34.3,
+        "y": 29.8,
+        "ore_type": "Gold"
+      },
+      "first_stable_detection_distance_yards": 64.1
+    },
+    {
+      "mining_event_wall_offset": 626.95,
+      "contact_sheet": "data/human_demo_tanaris_20260802_114252/analysis/ore_event_626.95_minimap.jpg",
+      "matched_node": {
+        "x": 55.1,
+        "y": 23.7,
+        "ore_type": "Iron"
+      },
+      "first_stable_detection_distance_yards": 63.6
+    },
+    {
+      "mining_event_wall_offset": 726.2,
+      "contact_sheet": "data/human_demo_tanaris_20260802_114252/analysis/ore_event_726.20_minimap.jpg",
+      "matched_node": {
+        "x": 64.09,
+        "y": 30.3,
+        "ore_type": "Small Thorium"
+      },
+      "first_stable_detection_distance_yards": 56.7
+    }
+  ],
+  "observed_distance_yards": {
+    "minimum": 50.2,
+    "median": 60.15,
+    "maximum": 64.1
+  },
+  "planning_radius_yards": 50.0,
+  "planning_rationale": "Use the floor of the clean observed range so the route does not depend on marginal icon visibility, one-frame detections, or coordinate OCR error.",
+  "limitations": [
+    "Only four clean events were suitable for measurement in this recording.",
+    "The result applies to the recorded UI scale and minimap zoom.",
+    "Historical GatherMate pins and dark underground icons were excluded from the live-icon measurement."
+  ]
+}

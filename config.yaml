@@ -1,0 +1,1126 @@
+# Safe portfolio defaults. Live route input remains disabled below, and the
+# CLI additionally requires portfolio.allow_live_input=true before route-live.
+portfolio:
+  allow_live_input: false
+
+window:
+  process_name: ["GameClient.exe", "wow.exe"]
+  title_contains: ["Legacy Game Client", "World of Warcraft"]
+
+capture:
+  fail_closed: true
+  require_foreground: true
+
+input:
+  backend: post_message
+
+screen:
+  reference_width: 2560
+  reference_height: 1440
+  scale_regions: true
+
+minimap:
+  x: 2267
+  y: 0
+  width: 293
+  height: 278
+
+player_position:
+  x: 2320
+  y: 280
+  width: 210
+  height: 70
+  fallback_regions:
+    - {x: 2347, y: 309, width: 136, height: 46}
+
+runtime_markers:
+  enabled: true
+  telemetry:
+    enabled: true
+    region: {x: 1120, y: 45, width: 320, height: 50}
+    bit_threshold: 150
+  minimap_ore_tooltip:
+    enabled: true
+    region: {x: 1120, y: 92, width: 320, height: 76}
+    bit_threshold: 150
+  mounted_region: {x: 1560, y: 0, width: 130, height: 64}
+  mounted_hsv_lower: [100, 210, 210]
+  mounted_hsv_upper: [115, 255, 255]
+  mounted_min_pixels: 700
+  armor_critical_region: {x: 2300, y: 310, width: 250, height: 60}
+  armor_critical_hsv_lower: [0, 210, 210]
+  armor_critical_hsv_upper: [6, 255, 255]
+  armor_critical_min_pixels: 700
+  forbidden_subzone_region: {x: 1660, y: 0, width: 170, height: 64}
+  forbidden_subzone_hsv_lower: [20, 210, 210]
+  forbidden_subzone_hsv_upper: [35, 255, 255]
+  forbidden_subzone_min_pixels: 700
+  dead_hostile_target_region: {x: 1740, y: 0, width: 190, height: 64}
+  dead_hostile_target_hsv_lower: [50, 190, 190]
+  dead_hostile_target_hsv_upper: [85, 255, 255]
+  dead_hostile_target_min_pixels: 700
+  loot_opened_region: {x: 2140, y: 0, width: 120, height: 64}
+  loot_opened_hsv_lower: [0, 0, 225]
+  loot_opened_hsv_upper: [179, 45, 255]
+  loot_opened_min_pixels: 700
+  combat_loot_pending_region: {x: 870, y: 0, width: 130, height: 64}
+  combat_loot_pending_hsv_lower: [132, 175, 210]
+  combat_loot_pending_hsv_upper: [142, 255, 255]
+  combat_loot_pending_min_pixels: 700
+  spirit_healer_target_region: {x: 1760, y: 0, width: 500, height: 64}
+  spirit_healer_target_hsv_lower: [160, 185, 210]
+  spirit_healer_target_hsv_upper: [172, 255, 255]
+  spirit_healer_target_min_pixels: 700
+  spirit_healer_dialog_region: {x: 1760, y: 0, width: 500, height: 64}
+  spirit_healer_dialog_hsv_lower: [68, 135, 210]
+  spirit_healer_dialog_hsv_upper: [80, 225, 255]
+  spirit_healer_dialog_min_pixels: 700
+
+post_combat_loot:
+  enabled: true
+  interact_key: G
+  target_last_enabled: true
+  target_last_key: F9
+  acquisition_timeout_seconds: 1.5
+  retarget_settle_seconds: 0.35
+  confirmation_timeout_seconds: 1.5
+  marker_clear_timeout_seconds: 1.0
+  max_interactions: 2
+  in_combat_enabled: true
+  return_target_settle_seconds: 0.35
+  interact_tap_seconds: 0.06
+  approach_enabled: false
+
+cursor_classifier:
+  enabled: true
+  templates_path: data/cursor_templates/cursor_templates.json
+  min_similarity: 0.90
+  calibration_output_dir: artifacts/cursor_calibration
+
+corpse_run:
+  enabled: false
+  waypoint_reached_distance_coord: 0.22
+  corpse_reached_distance_coord: 0.35
+  max_total_seconds: 240
+
+mounting:
+  enabled: true
+  key: "1"
+  cast_seconds: 2.0
+  retry_seconds: 4.0
+  max_attempts_before_fallback: 2
+  post_combat_settle_seconds: 3.0
+
+world_zone:
+  region: {x: 2280, y: 4, width: 250, height: 34}
+  scale: 3
+  hsv_lower: [35, 50, 80]
+  hsv_upper: [95, 255, 255]
+  zone_mappings:
+    Durotar: [4]
+    Echo Isles: [4]
+    Camp Taurajo: [5]
+    Desolace: [101, 102]
+    Kodo Graveyard: [101, 102]
+    Ghost Walker Post: [101, 102]
+    Sar'theris Strand: [101, 102]
+    Thunder Axe Fortress: [101, 102]
+    Bolgan's Hole: [101, 102]
+    Mannoroc Coven: [101, 102]
+    Sargeron: [101, 102]
+    Magram Village: [101, 102]
+    Gelkis Village: [101, 102]
+    Valley of Spears: [101, 102]
+    Nijel's Point: [101, 102]
+    Kolkar Village: [101, 102]
+    Shadowbreak Ravine: [101, 102]
+    Broken Spear Village: [101, 102]
+    The Veiled Sea: [101, 102]
+    Tethris Aran: [101, 102]
+    Ethel Rethor: [101, 102]
+    Ranazjar Isle: [101, 102]
+    Kormek's Hut: [101, 102]
+    Shadowprey Village: [101, 102]
+    Scrabblescrew's Camp: [101, 102]
+    Valley of Bones: [101, 102]
+    Ratchet: [11]
+    Razor Hill: [4]
+    Razormane Grounds: [4]
+    Sen'jin Village: [4]
+    Southfury River: [4]
+    The Barrens: [11, 5]
+    The Crossroads: [11, 5]
+    Valley of Trials: [4]
+
+position_ocr:
+  tesseract_cmd: "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+  template_first_fast_path: false
+  fast_grayscale_first: true
+  stop_after_first_valid_region: true
+  hsv_lower: [15, 40, 100]
+  hsv_upper: [50, 255, 255]
+  fallback_hsv_lower: [14, 50, 120]
+  fallback_hsv_upper: [55, 255, 255]
+  bright_fallback_hsv_lower: [14, 50, 150]
+  bright_fallback_hsv_upper: [55, 255, 255]
+  bright_fallback_values: [140, 150, 170]
+  min_area: 2
+  max_area: 120
+  min_height: 3
+  max_height: 20
+  max_width: 14
+  scale: 5
+
+movement:
+  start_coord_sample_count: 3
+  start_coord_sample_interval: 0.12
+  start_coord_consensus_distance: 0.15
+  position_ocr_enabled: true
+  poll_interval: 0.15
+  coord_interval: 0.50
+  max_coord_jump_per_poll: 1.5
+  mounted_coord_units_per_second: 0.75
+  foot_coord_units_per_second: 0.45
+  coord_jump_timing_margin: 0.25
+  coord_feedback_timeout_seconds: 2.0
+  coord_resync_confirm_steps: 3
+  coord_resync_max_distance: 5.0
+  stuck_check_window: 2
+  stuck_min_progress: 0.025
+  # Live Broken Pillar trap produced 0.02 coordinate OCR oscillation while the
+  # character remained visibly wedged. Treat it as noise, not route progress.
+  stuck_min_coord_delta: 0.03
+  obstacle_back_duration: 0.35
+  obstacle_strafe_duration: 0.55
+  obstacle_turn_duration: 0.18
+  obstacle_jump_duration: 0.08
+  local_avoid_retry_seconds: 0.45
+  obstacle_jump_first: true
+  obstacle_detour_duration: 0.35
+  obstacle_detour_max_duration: 0.65
+  obstacle_detour_settle_duration: 0.0
+  # Keep one escape direction long enough to avoid zigzag, then try the other
+  # side once a genuinely wedged obstacle survives four bounded recoveries.
+  obstacle_recovery_attempts_per_side: 4
+  recovery_coord_interval: 0.15
+  visual_stuck_window: 2
+  target_recovery_limit: 3
+  target_progress_timeout_seconds: 18.0
+  target_progress_min_improvement: 0.08
+  # Last resort only after the full progress timeout: get off the mount,
+  # create clearance, turn around with bounded RMB pulses and leave on foot.
+  hard_stuck_escape:
+    enabled: true
+    dismount_settle_seconds: 0.25
+    back_seconds: 0.75
+    turn_seconds: 1.95
+    turn_pulse_seconds: 0.39
+    forward_seconds: 0.90
+    remount_delay_seconds: 2.0
+    forward_waypoint_padding: 6
+  path_blocked_cooldown_seconds: 90
+  turn_duration: 0.22
+  turn_in_place_duration: 0.35
+  turn_in_place_alignment: -0.2
+  turn_alignment_threshold: 0.97
+  invert_turn_direction: true
+  heading_control:
+    enabled: true
+    fallback_to_legacy: true
+    max_heading_age_seconds: 0.60
+    reset_after_seconds: 0.75
+    # The full route uses a longer pure-pursuit target. Keep a modest deadband
+    # and suppress only one-tick A/D rebounds instead of chasing every OCR/yaw
+    # fluctuation.
+    turn_engage_degrees: 18.0
+    turn_release_degrees: 9.0
+    pivot_degrees: 45.0
+    positive_error_turn_key: A
+    turn_rate_degrees_per_second: 92.0
+    min_turn_pulse_seconds: 0.06
+    max_turn_pulse_seconds: 0.35
+    opposite_turn_lock_seconds: 2.50
+    opposite_turn_engage_degrees: 50.0
+  mouse_steering:
+    enabled: true
+    pixels_per_second:
+      default: 420.0
+      route: 420.0
+      # Continuous combat target search should be visibly slow and smooth.
+      combat: 300.0
+      spirit: 300.0
+      mining: 260.0
+      local: 420.0
+      recovery: 420.0
+      hostile: 420.0
+    step_interval_seconds: 0.012
+    min_duration_seconds: 0.04
+    max_duration_seconds: 0.40
+    route_moving_max_duration_seconds: 0.10
+    min_pixels: 2
+    restore_cursor: true
+
+route:
+  locations: [162]
+  ores: []
+  mode: cyclic
+  database_path: data/routes/generated/tanaris_terrain_coverage_cycle_v18_rail.json
+  follow_route_loop: true
+  polyline_following:
+    enabled: true
+    # About two seconds of mounted travel: long enough to smooth dense route
+    # vertices without cutting the terrain-planned corridor into a blind chord.
+    lookahead_distance: 1.50
+    # The Broken Pillar bypass is a tight WMO corner. Preserve its dense
+    # navmesh vertices locally so the ordinary 1.50 lookahead cannot chord
+    # back through the structure.
+    lookahead_overrides:
+      - {start_index: 9, end_index: 29, distance: 0.25}
+      - {start_index: 35, end_index: 155, distance: 0.25}
+      # V15 removes the whole Chasm spur. Preserve the short terrain bridge,
+      # then shift downstream V13 overrides by the 22 removed waypoints.
+      - {start_index: 183, end_index: 190, distance: 0.25}
+      # V16 replaces two southwest contact points with an eleven-point
+      # terrain-planned bypass north of the wreckage at 30.65,73.82.
+      - {start_index: 204, end_index: 219, distance: 0.25}
+      - {start_index: 257, end_index: 276, distance: 0.25}
+      - {start_index: 389, end_index: 403, distance: 0.25}
+    corridor_radius: 1.50
+    backward_tolerance: 0.25
+    max_forward_advance: 24.0
+    pass_tolerance: 0.05
+    projection_search_backward_segments: 3
+    projection_search_forward_segments: 32
+  reached_distance: 0.65
+  entry:
+    enabled: true
+    strategy: navmesh_dynamic
+    dynamic_failure_mode: advisory
+    # Entry waypoints are 0.5 coordinate units apart. A 0.08 point-radius made
+    # mounted movement overshoot, turn back and circle; use the validated
+    # pass-through tolerance while the final rail projection remains bounded.
+    reached_distance: 0.25
+    waypoint_pass_through_distance: 0.25
+    max_anchor_distance: 2.0
+    # The route loop is already terrain/navmesh planned. Replanning a second
+    # short mmap corridor to every route waypoint produced close alternating
+    # steering points and the wide live zigzags seen in v0.8.9.
+    guide_route_segments: false
+    guidance_failure_mode: advisory
+    guidance_replan_distance: 0.55
+    navmesh_profiles:
+      "102":
+        manifest_path: data/extracted_client_data/desolace_v2/manifest.json
+        adt_dir: data/extracted_client_data/desolace_v2/world/maps/Kalimdor
+        mmap_dir: data/server_navigation/ac_data_v20/mmaps
+        map_id: 1
+        candidate_count: 32
+        waypoint_spacing_yards: 25.0
+        max_nav_snap_yards: 40.0
+        max_nav_vertical_yards: 80.0
+        max_expansions: 200000
+        min_clearance_cells: 0.0
+        terrain:
+          soft_slope_degrees: 15.0
+          hard_slope_degrees: 35.0
+          slope_weight: 8.0
+          roughness_weight: 0.08
+          clearance_cells: 3.0
+          clearance_weight: 5.0
+      "162":
+        manifest_path: data/extracted_client_data/tanaris_corrected/manifest.json
+        adt_dir: data/extracted_client_data/tanaris_corrected/world/maps/Kalimdor
+        mmap_dir: data/server_navigation/ac_data_v20/mmaps
+        map_id: 1
+        hazards_path: data/routes/live_hazards/tanaris.json
+        candidate_count: 32
+        waypoint_spacing_yards: 25.0
+        max_nav_snap_yards: 40.0
+        max_nav_vertical_yards: 80.0
+        max_expansions: 200000
+        min_clearance_cells: 0.0
+        terrain:
+          soft_slope_degrees: 15.0
+          hard_slope_degrees: 35.0
+          slope_weight: 8.0
+          roughness_weight: 0.08
+          clearance_cells: 3.0
+          clearance_weight: 5.0
+  tracking_radius_coord: 1.15
+  blocked_waypoint_forward_padding: 2
+  absence_confirm_steps: 2
+  dark_exclusion_enabled: false
+  dark_exclude_distance_coord: 0.25
+  absence_cooldown_seconds: 300
+  permanent_exclusions_path: data/permanent_exclusions_tanaris.json
+
+recognition:
+  bright_template_enabled: true
+  bright_templates:
+    - {path: assets/minimap_ore_bright_reference.png, reference_minimap: {width: 291, height: 275}}
+    - {path: assets/minimap_ore_bright/tanaris_136_a.png, reference_minimap: {width: 183, height: 174}}
+    - {path: assets/minimap_ore_bright/tanaris_136_b.png, reference_minimap: {width: 183, height: 174}}
+    - {path: assets/minimap_ore_bright/tanaris_209_a.png, reference_minimap: {width: 183, height: 174}}
+    - {path: assets/minimap_ore_bright/tanaris_209_b.png, reference_minimap: {width: 183, height: 174}}
+  bright_template_scale_offsets: [0.94, 1.0, 1.06]
+  bright_template_threshold: 0.60
+  bright_template_nms_radius: 10
+  bright_template_fallback_hsv: false
+  bright_icon_luminance_radius: 7
+  bright_icon_min_yellow_pixels: 20
+  bright_icon_min_yellow_value: 175
+  bright_icon_shape_filter_enabled: true
+  bright_icon_shape_radius: 12
+  bright_icon_shape_min_pixels: 8
+  bright_icon_min_component_aspect: 0.72
+  bright_icon_max_component_aspect: 1.45
+  sensor_circle_center_fraction: {x: 0.50, y: 0.48}
+  # Use the full visible minimap interior. Tooltip confirmation is the final
+  # authority, so edge recall is safer than silently discarding a live dot.
+  sensor_circle_radius_fraction: 0.42
+  hsv_lower: [22, 120, 130]
+  hsv_upper: [38, 255, 255]
+  dark_icon:
+    # Tracking-dot luminance varies with range/terrain and was reclassifying
+    # clearly visible live ore as "dark". Every template match now goes through
+    # the authoritative minimap-tooltip gate instead.
+    template_classification_enabled: false
+    generic_hsv_fallback: false
+    hsv_lower: [18, 70, 30]
+    hsv_upper: [45, 255, 129]
+    close_kernel: 1
+    open_kernel: 1
+    edge_margin: 12
+  min_area: 8
+  max_area: 160
+  min_width: 3
+  max_width: 16
+  min_height: 3
+  max_height: 16
+  close_kernel: 1
+  open_kernel: 1
+  ignore_regions:
+    - {x: 25, y: 195, width: 60, height: 83}
+    - {x: 215, y: 190, width: 68, height: 88}
+    - {x: 252, y: 0, width: 40, height: 30}
+
+screen_objects:
+  nms_iou_threshold: 0.35
+  model:
+    enabled: false
+    path: external_data/models/traversability_candidate.pt
+    mode: bootstrap_only
+    imgsz: 640
+    conf: 0.10
+    max_det: 100
+    class_min_scores:
+      aggressive_mob: 0.25
+      peaceful_mob: 0.25
+      ore_vein: 0.35
+      minimap_ore_icon: 0.25
+      terrain_obstacle: 0.15
+      terrain_edge: 0.25
+      movement_blocker: 0.35
+      walkable_corridor: 0.35
+  world_region: {x: 0, y: 40, width: 2180, height: 980}
+  navigation_region: {x: 520, y: 230, width: 1320, height: 760}
+  nameplates:
+    min_area: 80
+    max_area: 5000
+    min_width: 20
+    max_width: 300
+    min_height: 4
+    max_height: 24
+    min_aspect: 3.0
+    max_aspect: 45.0
+    close_kernel: 5
+    score: 0.70
+  minimap_ore_icon:
+    enabled: false
+    bbox_radius: 7
+    score: 0.90
+  terrain:
+    enabled: true
+    canny_low: 45
+    canny_high: 120
+    close_kernel: 7
+    min_area: 1200
+    max_area: 160000
+    min_width: 45
+    max_width: 900
+    min_height: 35
+    max_height: 600
+    min_aspect: 0.20
+    max_aspect: 8.0
+    max_candidates: 8
+    score: 0.25
+  walkability:
+    enabled: true
+    columns: 9
+    lower_fraction: 0.52
+    analysis_bottom_fraction: 0.84
+    self_ignore_enabled: true
+    self_ignore_x_fraction: 0.18
+    self_ignore_y_fraction: 0.64
+    canny_low: 35
+    canny_high: 105
+    vertical_edge_threshold: 35
+    edge_weight: 1.5
+    vertical_weight: 2.8
+    texture_weight: 0.05
+    bottom_edge_weight: 2.0
+    blocker_threshold: 0.48
+    free_threshold: 0.33
+    horizon_min_fraction: 0.18
+    horizon_max_fraction: 0.72
+    horizon_min_density: 0.08
+    horizon_box_height: 10
+
+local_navigation:
+  enabled: true
+  proactive_avoid_enabled: true
+  bypass_clear_seconds: 0.65
+  max_turn_pulses_per_side: 3
+  side_switch_backtrack_seconds: 0.25
+  region: {x: 520, y: 230, width: 1320, height: 760}
+  analysis_top_fraction: 0.30
+  analysis_bottom_fraction: 0.88
+  canny_low: 35
+  canny_high: 105
+  vertical_edge_threshold: 38
+  edge_weight: 1.35
+  vertical_weight: 2.55
+  texture_weight: 0.10
+  bottom_edge_weight: 1.65
+  center_bias: 0.16
+  slight_sector_bias: 0.03
+  self_ignore:
+    enabled: true
+    center_x_fraction: 0.50
+    bottom_fraction: 0.98
+    width_fraction: 0.18
+    height_fraction: 0.28
+
+safety:
+  combat:
+    enabled: true
+    combat_marker_enabled: true
+    combat_marker_region: {x: 1238, y: 0, width: 84, height: 48}
+    combat_marker_hsv_lower: [145, 220, 220]
+    combat_marker_hsv_upper: [155, 255, 255]
+    combat_marker_min_pixels: 800
+    combat_marker_clear_seconds: 0.75
+    outcome_marker_enabled: true
+    outcome_marker_min_pixels: 800
+    attacker_target_marker_enabled: true
+    attacker_target_marker_region: {x: 996, y: 0, width: 112, height: 56}
+    attacker_target_marker_hsv_lower: [115, 220, 220]
+    attacker_target_marker_hsv_upper: [125, 255, 255]
+    attacker_target_marker_min_pixels: 800
+    # v0.4.5 addon marker: red=1, orange=2, white=3+ unique recent attackers.
+    # It is passive threat telemetry until a separate ability/key policy is
+    # accepted; it never authorizes an unknown combat key by itself.
+    attacker_count_marker_enabled: true
+    attacker_count_marker_region: {x: 760, y: 0, width: 130, height: 56}
+    attacker_count_marker_min_pixels: 800
+    attacker_count_one_hsv_lower: [0, 220, 220]
+    attacker_count_one_hsv_upper: [6, 255, 255]
+    attacker_count_two_hsv_lower: [10, 220, 220]
+    attacker_count_two_hsv_upper: [22, 255, 255]
+    attacker_count_three_hsv_lower: [0, 0, 225]
+    attacker_count_three_hsv_upper: [179, 45, 255]
+    threat_hp_window_seconds: 5.0
+    outgoing_hit_marker_region: {x: 1108, y: 0, width: 112, height: 56}
+    outgoing_hit_marker_hsv_lower: [55, 220, 220]
+    outgoing_hit_marker_hsv_upper: [65, 255, 255]
+    facing_error_marker_region: {x: 1338, y: 0, width: 112, height: 56}
+    facing_error_marker_hsv_lower: [85, 220, 220]
+    facing_error_marker_hsv_upper: [95, 255, 255]
+    out_of_range_marker_region: {x: 1452, y: 0, width: 112, height: 56}
+    out_of_range_marker_hsv_lower: [8, 220, 220]
+    out_of_range_marker_hsv_upper: [20, 255, 255]
+    legacy_outgoing_damage_confirmation_enabled: false
+    legacy_facing_error_confirmation_enabled: false
+    engage_on_nameplate: false
+    target_frame_detector_enabled: true
+    target_frame_starts_combat: false
+    confirmed_target_frame_region: {x: 300, y: 15, width: 390, height: 120}
+    target_red_health_min_fill_ratio: 0.60
+    player_health_region: {x: 155, y: 70, width: 190, height: 25}
+    player_health_hsv_lower: [35, 60, 50]
+    player_health_hsv_upper: [95, 255, 255]
+    player_health_column_min_pixels: 4
+    attack_keys: ["E"]
+    attack_interval: 0.20
+    periodic_keys: ["X"]
+    periodic_interval: 15.0
+    # Q is allowed only after an E-triggered outgoing hit has locked facing.
+    aligned_periodic_keys: ["Q"]
+    aligned_periodic_interval: 5.0
+    # F is serialized ahead of X/Q/E whenever visible HP is at or below 20%.
+    low_health_priority_keys: ["F"]
+    low_health_priority_threshold: 0.20
+    low_health_priority_interval: 15.0
+    attack_tap_duration: 0.06
+    combat_key_min_interval: 0.12
+    range_approach_duration: 0.35
+    range_approach_cooldown_seconds: 0.55
+    face_turn_duration: 0.15
+    face_center_deadzone_px: 35
+    damage_timeout_seconds: 4.0
+    # Hold the confirmed target bearing through ordinary three-second stuns;
+    # combat-marker clear/loot releases it sooner, while this is the fail-safe.
+    target_lock_no_hit_seconds: 8.0
+    # A selected frame/nameplate alone cannot hold a health-drop-only episode
+    # forever. Ongoing HP loss or any authoritative addon combat marker resets it.
+    stale_soft_target_seconds: 6.0
+    face_search_cooldown_seconds: 1.0
+    face_search_turn_key: "D"
+    continuous_face_search_enabled: true
+    # E owns target acquisition/attack. F8 cycling selected unrelated distant mobs
+    # in the v0.8.16 live run and bypassed the serialized F/V > X > Q > E contract.
+    attacker_target_selection_enabled: false
+    attacker_target_cycle_key: F8
+    attacker_target_cycle_interval: 0.35
+    target_interact_facing_enabled: false
+    target_interact_key: G
+    target_interact_cooldown_seconds: 0.45
+    target_interact_probe_delay_seconds: 0.35
+    nameplate_facing_enabled: false
+    nameplate_face_turn_duration: 0.08
+    # The 190 px visible HP bar quantizes between 0.963 and 0.947 (1.579%) on
+    # unchanged health. Stay above that measured jitter; the addon combat marker
+    # remains authoritative and larger visible drops still provide fallback.
+    health_drop_latch_threshold: 0.02
+    mounted_escape_enabled: true
+    mounted_escape_min_health: 0.55
+    # Stop trying to outrun combat when two attackers / dangerous HP loss are
+    # visible, or when one attacker has chased the mount for too long.
+    mounted_escape_max_active_seconds: 12.0
+    mounted_escape_progress_timeout_seconds: 3.0
+    mounted_escape_min_coord_delta: 0.015
+    face_search_turn_180_duration: 0.18
+    face_search_turn_90_duration: 0.18
+    facing_error_detector_enabled: true
+    facing_error_region: {x: 720, y: 120, width: 1120, height: 190}
+    facing_error_min_red: 80
+    facing_error_max_green: 30
+    facing_error_max_blue: 30
+    facing_error_min_red_green_delta: 60
+    facing_error_min_red_blue_delta: 60
+    facing_error_min_pixels: 300
+    facing_error_min_components: 3
+    facing_error_row_band_height: 5
+    facing_error_min_row_band_pixels: 300
+    facing_error_min_span_width: 300
+    outgoing_damage_region: {x: 520, y: 180, width: 1320, height: 650}
+    outgoing_damage_yellow_hsv_lower: [15, 45, 145]
+    outgoing_damage_yellow_hsv_upper: [45, 255, 255]
+    outgoing_damage_white_hsv_lower: [0, 0, 190]
+    outgoing_damage_white_hsv_upper: [179, 85, 255]
+    outgoing_damage_min_area: 120
+    outgoing_damage_max_area: 9000
+    outgoing_damage_min_width: 8
+    outgoing_damage_max_width: 260
+    outgoing_damage_min_height: 10
+    outgoing_damage_max_height: 95
+    outgoing_damage_min_fill_ratio: 0.18
+    clear_frames: 3
+    clear_seconds: 3.0
+    heal_key: V
+    heal_tap_duration: 0.06
+    heal_cast_seconds: 2.0
+    # A lethal v0.8.25 sample left no second frame after F. Serialize one V
+    # directly after F, then reuse the ordinary heal cooldown/cast ownership.
+    emergency_heal_followup_enabled: true
+    emergency_heal_followup_delay_seconds: 0.12
+    low_health_heal_enabled: true
+    low_health_heal_threshold: 0.50
+    low_health_heal_cooldown_seconds: 8.0
+  death_recovery:
+    enabled: true
+    death_recap_dismiss_enabled: true
+    death_recap_dismiss_wait_seconds: 0.25
+    death_recap_region: {x: 780, y: 390, width: 850, height: 260}
+    resurrection_mode: spirit_healer
+    max_attempts: 2
+    release_click_duration: 0.05
+    click_duration: 0.12
+    click_settle_seconds: 0.10
+    release_wait_seconds: 2.5
+    resurrection_sickness_state_path: data/runtime/resurrection_sickness.json
+    safe_zone_resurrect_enabled: false
+    safe_zone_resurrect_max_attempts: 2
+    safe_zone_resurrect_wait_seconds: 2.5
+    safe_zone_destination_max_attempts: 4
+    safe_zone_destination_wait_seconds: 2.5
+    # Release Spirit already places this LegacyClient character at the cemetery.
+    # The extra Return to Graveyard confirmation only repeats the teleport.
+    return_to_graveyard_enabled: false
+    return_to_graveyard_max_attempts: 2
+    return_to_graveyard_wait_seconds: 3.0
+    return_to_graveyard_accept_max_attempts: 2
+    return_to_graveyard_accept_wait_seconds: 3.0
+    return_to_graveyard_region: {x: 1020, y: 120, width: 300, height: 120}
+    return_to_graveyard_accept_region: {x: 1000, y: 250, width: 320, height: 120}
+    spirit_healer_enabled: true
+    spirit_healer_max_attempts: 6
+    spirit_healer_wait_seconds: 1.0
+    spirit_healer_approach_max_attempts: 12
+    spirit_healer_approach_wait_seconds: 0.45
+    spirit_healer_approach_forward_seconds: 0.75
+    spirit_healer_approach_turn_seconds: 0.18
+    spirit_healer_approach_deadzone_fraction: 0.12
+    spirit_healer_search_max_attempts: 0
+    spirit_healer_search_wait_seconds: 0.35
+    spirit_healer_search_turn_seconds: 0.225
+    spirit_healer_search_turn_key: D
+    spirit_healer_visual_primary: false
+    spirit_healer_graveyard_visual_fallback_enabled: true
+    spirit_healer_graveyard_visual_fallback_after_attempts: 3
+    spirit_healer_visual_hover_wait_seconds: 0.30
+    spirit_healer_anchor_after_search_attempts: 1
+    spirit_healer_anchor_poll_seconds: 0.20
+    # Public reference DB npc=6491, Tanaris map=440. Offline hints only;
+    # visible target/error/dialog evidence remains authoritative at runtime.
+    spirit_healer_coordinate_anchors:
+      - {name: tanaris_ascension_494_590, coord: 4940590000, activation_radius: 0.65, arrival_distance: 0.18}
+      - {name: tanaris_ascension_636_494, coord: 6360494000, activation_radius: 0.65, arrival_distance: 0.18}
+      - {name: tanaris_ascension_690_407, coord: 6900407000, activation_radius: 0.65, arrival_distance: 0.18}
+      - {name: tanaris_ascension_539_288, coord: 5390288000, activation_radius: 0.65, arrival_distance: 0.18}
+      - {name: tanaris_ascension_363_690, coord: 3630690000, activation_radius: 0.65, arrival_distance: 0.18}
+      - {name: tanaris_ascension_405_407, coord: 4050407000, activation_radius: 0.65, arrival_distance: 0.18}
+    spirit_healer_graveyard_max_saturation: 70
+    spirit_healer_graveyard_min_value: 235
+    spirit_healer_graveyard_min_x_fraction: 0.28
+    spirit_healer_graveyard_max_x_fraction: 0.72
+    spirit_healer_graveyard_min_y_fraction: 0.15
+    spirit_healer_graveyard_max_y_fraction: 0.72
+    spirit_healer_graveyard_min_area: 7000
+    spirit_healer_graveyard_min_width: 80
+    spirit_healer_graveyard_max_width: 700
+    spirit_healer_graveyard_min_height: 180
+    spirit_healer_graveyard_max_height: 700
+    spirit_healer_graveyard_min_aspect: 0.45
+    spirit_healer_graveyard_max_aspect: 1.80
+    spirit_healer_graveyard_max_bbox_y_fraction: 0.25
+    spirit_healer_graveyard_max_center_distance_fraction: 0.25
+    spirit_healer_tooltip_region: {x: 2100, y: 1060, width: 420, height: 300}
+    spirit_healer_target_interact_enabled: true
+    spirit_healer_interact_selected_target_enabled: true
+    spirit_healer_target_interact_max_attempts: 0
+    spirit_healer_target_interact_wait_seconds: 0.65
+    spirit_healer_target_key: C
+    spirit_healer_target_wait_seconds: 0.15
+    spirit_healer_interact_key: G
+    spirit_healer_follow_target_enabled: false
+    spirit_healer_follow_target_key: F6
+    spirit_healer_follow_target_wait_seconds: 1.25
+    spirit_healer_local_search_enabled: true
+    spirit_healer_local_search_start_radius: 0.18
+    spirit_healer_local_search_ring_step: 0.10
+    spirit_healer_local_search_max_radius: 0.55
+    spirit_healer_local_search_leash_radius: 0.65
+    spirit_healer_local_search_points_per_ring: 8
+    spirit_healer_local_search_return_to_origin: true
+    spirit_healer_local_search_reached_distance: 0.045
+    spirit_healer_local_search_pass_distance: 0.18
+    spirit_healer_local_search_pass_margin: 0.08
+    spirit_healer_local_search_leg_max_seconds: 2.5
+    spirit_healer_local_search_poll_seconds: 0.20
+    spirit_healer_search_interact_interval_seconds: 0.30
+    spirit_healer_target_frame_region: {x: 300, y: 10, width: 450, height: 120}
+    spirit_healer_interaction_error_region: {x: 720, y: 120, width: 1120, height: 190}
+    spirit_healer_interaction_error_min_red: 100
+    spirit_healer_interaction_error_max_green: 75
+    spirit_healer_interaction_error_max_blue: 75
+    spirit_healer_interaction_error_min_red_green_delta: 60
+    spirit_healer_interaction_error_min_red_blue_delta: 60
+    spirit_healer_interaction_error_min_pixels: 500
+    spirit_healer_interaction_error_min_span_width: 300
+    spirit_healer_region: {x: 0, y: 220, width: 2205, height: 920}
+    spirit_healer_ignore_regions:
+      - {x: 350, y: 900, width: 1850, height: 540}
+      - {x: 2320, y: 240, width: 240, height: 920}
+    spirit_healer_min_area: 2000
+    spirit_healer_max_area: 220000
+    spirit_healer_min_width: 35
+    spirit_healer_max_width: 900
+    spirit_healer_min_height: 150
+    spirit_healer_max_height: 850
+    spirit_healer_max_saturation: 82
+    spirit_healer_min_value: 182
+    spirit_healer_center_min_x_fraction: 0.0
+    spirit_healer_cluster_dx: 560
+    spirit_healer_cluster_dy: 420
+    spirit_healer_left_edge_click_x_fraction: 0.22
+    spirit_healer_left_edge_click_margin_px: 12
+    spirit_healer_self_ignore_enabled: true
+    spirit_healer_self_ignore_max_width: 260
+    spirit_healer_self_ignore_max_height: 380
+    spirit_healer_self_ignore_center_min_x_fraction: 0.38
+    spirit_healer_self_ignore_center_max_x_fraction: 0.62
+    spirit_healer_self_ignore_center_min_y_fraction: 0.42
+    spirit_healer_self_ignore_center_max_y_fraction: 0.78
+    return_to_life_max_attempts: 3
+    return_to_life_wait_seconds: 1.0
+    return_to_life_region: {x: 40, y: 120, width: 960, height: 720}
+    return_to_life_fallback_click_enabled: false
+    return_to_life_fallback_click_fraction: {x: 0.38, y: 0.46}
+    accept_resurrection_max_attempts: 2
+    accept_resurrection_wait_seconds: 1.25
+    accept_button_region: {x: 640, y: 70, width: 1280, height: 520}
+    safe_zone_resurrect_button_region: {x: 800, y: 95, width: 900, height: 190}
+    safe_zone_resurrect_min_area: 1200
+    safe_zone_resurrect_max_area: 9000
+    safe_zone_resurrect_min_width: 70
+    safe_zone_resurrect_max_width: 260
+    safe_zone_resurrect_min_height: 20
+    safe_zone_resurrect_max_height: 70
+    safe_zone_resurrect_center_min_x_fraction: 0.38
+    safe_zone_resurrect_center_max_x_fraction: 0.68
+    safe_zone_resurrect_center_min_y_fraction: 0.08
+    safe_zone_resurrect_center_max_y_fraction: 0.20
+    resurrect_sickness_wait_enabled: true
+    resurrect_sickness_wait_seconds: 600.0
+    release_button_region: {x: 640, y: 70, width: 1280, height: 450}
+    release_button_min_area: 2500
+    release_button_max_area: 9000
+    release_button_min_width: 120
+    release_button_max_width: 360
+    release_button_min_height: 18
+    release_button_max_height: 60
+    release_button_min_aspect: 2.5
+    release_button_min_fill_ratio: 0.65
+    release_button_center_min_x_fraction: 0.32
+    release_button_center_max_x_fraction: 0.68
+    release_button_center_min_y_fraction: 0.12
+    release_button_center_max_y_fraction: 0.34
+    fallback_click_enabled: true
+    fallback_click_fraction: {x: 0.41, y: 0.49}
+  hostile_avoidance:
+    enabled: false
+    turn_duration: 0.28
+    commit_duration: 1.75
+    target_frame_enabled: false
+    target_frame_region: {x: 230, y: 0, width: 420, height: 150}
+    target_frame_min_area: 90
+    target_frame_min_width: 28
+    target_frame_min_height: 4
+    target_frame_min_fill_ratio: 0.55
+    target_frame_score: 0.95
+    central_threat_region: {x: 520, y: 180, width: 1320, height: 650}
+    nameplate_min_area: 80
+    nameplate_min_width: 40
+    nameplate_min_height: 4
+    nameplate_max_height: 28
+    nameplate_min_fill_ratio: 0.60
+    nameplate_score: 0.85
+    combat_warning_enabled: false
+    combat_warning_region: {x: 820, y: 420, width: 920, height: 360}
+    combat_warning_min_red_area: 180
+    combat_warning_component_min_area: 500
+    combat_warning_min_fill_ratio: 0.45
+    combat_warning_score: 0.70
+
+training_capture:
+  route_live:
+    frame_interval_seconds: 1.0
+    image_writer_queue_size: 16
+    safe_drain_max_steps: 600
+    external_stop_safe_drain_seconds: 120.0
+    video:
+      enabled: true
+      fps: 10.0
+      max_width: 1600
+      segment_seconds: 30.0
+      filename: window_capture.mp4
+  reached_ore:
+    enabled: false
+    output_dir: data/reached_ore_training_samples
+    include_dark_ore: false
+    save_debug_artifacts: true
+    ignore_bottom_ui_fraction: 0.72
+    ignore_right_ui_fraction: 0.78
+    ignore_left_ui_fraction: 0.18
+    ignore_top_left_ui_fraction: 0.18
+
+vision_dataset:
+  output_dir: data/vision_dataset
+  collect_interval: 0.20
+  auto_label: true
+  save_overlays: true
+  label_min_score: 0.25
+
+mining:
+  enabled: false
+  route_live_enabled: false
+  reached_distance: 0.20
+  # Retain the narrow ordinary/unconfirmed player admission radius. Tooltip-
+  # confirmed DB identity uses the separate search envelope below.
+  candidate_match_distance_coord: 0.70
+  # The ordinary 0.70 player radius is an admission guard, not a DB identity
+  # radius. Once the native tooltip proves live ore/type, search the small V7
+  # node list across the full observed minimap envelope. Access ownership still
+  # requires the existing <=0.18 route attachment, so this adds no detour,
+  # screenshot, cursor hover or wait by itself.
+  # Zoom-12 live telemetry shows a full minimap radius of about 2.34%/3.38%
+  # of Tanaris on X/Y. Scan the complete visible envelope; 139-node matching
+  # remains sub-millisecond and access-plan attachment still gates movement.
+  tooltip_confirmed_database_search_distance_coord: 4.0
+  marker_database_match_distance_coord: 0.55
+  require_minimap_tooltip_confirmation: true
+  tooltip_confirmed_relaxed_match_enabled: true
+  # A native tooltip proves that ore is live, but movement still requires a
+  # compatible/admissible DB spawn. Never steer from a synthetic projection.
+  tooltip_confirmed_unmatched_enabled: false
+  tooltip_confirmed_unmatched_max_distance_coord: 0.75
+  minimap_tooltip_probe:
+    enabled: true
+    # If the character already covers the icon, a DB spawn within this tiny
+    # radius may request a read-only hover at the exact minimap center. Only a
+    # native ore tooltip can turn that offline hint into a live candidate.
+    center_fallback_enabled: true
+    center_fallback_max_distance_coord: 0.08
+    settle_seconds: 0.10
+    timeout_seconds: 0.70
+    retry_cooldown_seconds: 2.0
+    confirmation_hold_seconds: 0.75
+    release_cursor_point: {x: 1280, y: 170}
+  marker_bearing_enabled: true
+  marker_bearing_min_pixels: 5
+  marker_bearing_min_alignment: 0.20
+  marker_bearing_weight: 2.0
+  marker_radial_weight: 1.0
+  direct_marker_intercept_enabled: true
+  # Empirical zoom-12 calibration from 108 same-track live coordinate/pixel
+  # pairs: median 0.0200 map-%/px on X and 0.02894 on Y. With the current
+  # 293x278 crop and 0.42 sensor radius this is 2.34% / 3.38%. The previous
+  # 0.72/1.09 values underestimated every final marker correction by ~3.1x.
+  marker_tracking_radius_x_coord: 2.34
+  marker_tracking_radius_y_coord: 3.38
+  direct_marker_intercept_max_node_delta_coord: 1.35
+  # A native-tooltip-confirmed icon proves live presence. A matched GatherMate
+  # coordinate is the fixed historical successful interaction anchor; the live
+  # marker remains authoritative for identity and post-arrival facing only.
+  direct_node_intercept_first_enabled: false
+  direct_marker_world_search_distance_coord: 0.04
+  # Ordinarily world search waits until the live ore is under the player
+  # marker. Six minimap pixels is the final visible centering gate; if the
+  # player icon hides the ore inside the wider occlusion radius, hover the
+  # exact minimap center and require the native ore tooltip there. The bounded
+  # anchor-local exception below exists only after the fixed DB anchor was
+  # already reached and still cannot click without native world evidence.
+  direct_marker_world_scan_radius_pixels: 6
+  centered_marker_radius_pixels: 6
+  centered_marker_occlusion_radius_pixels: 18
+  # If the fixed GatherMate interaction anchor has already been reached and a
+  # modest 18-24 px residual contradicts an immediately adjacent world vein,
+  # stay stopped and let the candidate-only model seek native tooltip/pickaxe
+  # authority first. A short miss falls back to the original single residual
+  # correction; model evidence alone still cannot click.
+  anchor_local_world_validation_enabled: true
+  anchor_local_world_validation_radius_pixels: 24
+  anchor_local_world_validation_seconds: 3.0
+  center_tooltip_probe:
+    settle_seconds: 0.12
+    timeout_seconds: 0.90
+  # A DB-backed node at its anchor can be hidden by the player icon. If the
+  # minimap-center tooltip then vanishes, require bounded world-model plus
+  # native world-hover authority instead of cooling the node immediately.
+  center_tooltip_world_scan_fallback_enabled: true
+  direct_marker_world_scan_candidate_distance_coord: 0.08
+  lost_marker_world_scan_distance_coord: 0.10
+  lost_marker_world_scan_radius_pixels: 36
+  world_scan_camera_reset_enabled: true
+  world_scan_camera_reset_key: F7
+  world_scan_camera_reset_tap_seconds: 0.04
+  # Full-route live mining may leave the rail only through a precomputed safe
+  # terrain access plan. Brightness alone is not proof of a traversable line.
+  require_access_plan_for_route_live: true
+  # A plan is safe only from its rail attachment. If the icon is detected
+  # earlier, keep following the rail and acquire it again near that attachment
+  # instead of drawing an unplanned chord across a hill.
+  # V0.8.17 live rail cross-track reached 0.265 at a valid Small Thorium
+  # attachment; 0.18 rejected it despite native tooltip/type and a safe plan.
+  access_attachment_max_distance_coord: 0.35
+  access_option_retry_enabled: true
+  max_access_option_retries: 1
+  intercept_progress_coord: 0.02
+  world_search_distance_coord: 0.08
+  # Coordinate OCR is sampled while mounted movement is continuous. Hand off
+  # from terrain access to the visual search as soon as a confirmed candidate
+  # is reached or the travelled segment crosses this radius; do not finish a
+  # side waypoint after already passing the spawn coordinate.
+  candidate_handoff_distance_coord: 0.08
+  # Coarse access and node travel remain continuous. Coordinate OCR runs every
+  # The configured 0.5-second OCR request produced 0.735s median / 1.214s p95
+  # accepted samples in v0.8.18, with 12.6yd p95 and 16.02yd max mounted travel
+  # between them. Brake inside 19 physical yards (observed max plus the 2.5yd
+  # arrival tolerance), then use a local 0.15s stopped-coordinate refresh,
+  # align in place and issue one speed-calibrated W burst. This is an empirical
+  # braking envelope, not a mandatory wait point; the burst is never micro-stepped.
+  # The Tanaris dimensions come from the extracted client map manifest; mounted
+  # speed is the 16.77 yd/s median of 369 clean v0.8.14 telemetry segments.
+  final_database_approach:
+    enabled: true
+    map_width_yards: 6900.0
+    map_height_yards: 4600.0
+    trigger_distance_yards: 19.0
+    # DB-anchor arrival is only the handoff to live-marker centering, not click
+    # authority. RUN1 produced a healthy 2.85 yd residual after one mounted
+    # impulse; accept that instead of converting it into a false hard failure.
+    arrival_tolerance_yards: 3.5
+    # Only after the one non-repeatable W burst, allow a near-anchor handoff to
+    # tooltip-gated world scan. Initial arrival remains strict at 3.5 yd.
+    post_burst_world_scan_tolerance_yards: 6.0
+    mounted_speed_yards_per_second: 16.8
+    foot_speed_yards_per_second: 7.0
+    min_burst_seconds: 0.05
+    # Stop slightly short of the coordinate and let the live-marker stage close
+    # the residual. RUN1 showed that aiming for exact zero could overshoot the
+    # DB anchor by 6.8 yd because OCR, yaw and movement are not atomic.
+    burst_stop_short_yards: 1.0
+    # Mounted braking remains short. A dismounted post-combat approach needs up
+    # to 2.36 s across the same 19 yd envelope; sharing the mounted cap caused
+    # a deterministic foot miss from 14.4 yd.
+    mounted_max_burst_seconds: 1.15
+    foot_max_burst_seconds: 2.40
+    precision_coord_interval_seconds: 0.15
+    feedback_settle_seconds: 0.35
+    feedback_timeout_seconds: 1.75
+  bright_confirm_frames: 2
+  marker_track_max_jump_pixels: 24
+  marker_track_missing_frames: 3
+  # Four consecutive misses suppress single-frame CV loss. A tooltip-confirmed
+  # marker that is still absent after this gate is treated as gathered by
+  # another player and receives the normal failure/spatial cooldown.
+  intercept_marker_missing_frames: 4
+  continue_coordinate_approach_after_marker_loss: true
+  cooldown_seconds: 180
+  failure_cooldown_seconds: 300
+  # Cool both the stable DB spawn and the last live marker projection. The
+  # wider same-ore footprint prevents projection jitter from reopening the
+  # identical physical vein after one bounded failed transaction.
+  failure_spatial_cooldown_radius_coord: 0.65
+  dark_failure_cooldown_seconds: 86400
+  max_total_seconds: 60
+  final_world_scan_distance_coord: 0.06
+  max_intercept_seconds: 30
+  max_face_node_seconds: 4.0
+  face_node_timeout_starts_world_scan: true
+  intercept_no_progress_seconds: 4.0
+  intercept_progress_pixels: 3
+  intercept_stall_world_scan_distance_coord: 0.08
+  intercept_stall_world_scan_radius_pixels: 52
+  max_world_scan_seconds: 16
+  dark_target_confirm_frames: 2
+  scan_region: {x: 760, y: 260, width: 940, height: 640}
+  scan_step: 32
+  scan_max_points: 72
+  front_probe_enabled: true
+  front_probe_center_x_fraction: 0.50
+  # Search the visible ground in front/left/right before probing underfoot.
+  front_probe_y_fractions: [0.50, 0.56, 0.62, 0.44, 0.68, 0.74]
+  front_probe_x_offsets: [0, -32, 32, -64, 64, -96, 96]
+  front_probe_max_points: 42
+  salient_probe_enabled: true
+  salient_probe_region: {x: 220, y: 180, width: 1760, height: 950}
+  salient_probe_hsv_lower: [35, 80, 90]
+  salient_probe_hsv_upper: [115, 255, 255]
+  salient_probe_min_area: 24
+  # RUN5 showed a close Small Thorium vein occupying about 270k HSV pixels.
+  # Keep the candidate-only salient fallback useful at final mining range.
+  salient_probe_max_area: 300000
+  salient_probe_close_kernel: 5
+  salient_probe_offsets: [0, -22, 22]
+  salient_probe_max_points: 24
+  ore_world_detector:
+    enabled: true
+    prewarm: true
+    model_path: external_data/models/ore_world_candidate.pt
+    imgsz: 640
+    confidence: 0.35
+    # Ore sparkle animation moved the same live Gold vein from 0.331 to 0.747
+    # confidence. Re-run candidate inference while the bounded hover scan is
+    # active instead of trusting one unlucky animation frame.
+    refresh_interval_seconds: 0.75
+    refresh_point_dedupe_pixels: 20
+    model_iou_threshold: 0.45
+    dedupe_iou_threshold: 0.45
+    model_max_detections: 12
+    max_candidates: 3
+    min_area_fraction: 0.0005
+    # Close post-F7 ore can occupy 12-14% of the frame. Hover/tooltip evidence
+    # still authorizes every click, so accepting large proposals is safe.
+    max_area_fraction: 0.18
+    # Candidate boxes never authorize clicks without a native mining cursor.
+    # RUN1 proved the old lower-center exclusion also discarded a real close20
+    # vein (0.905 confidence), so retain candidates and let cursor evidence
+    # reject the player model.
+    self_exclusion_enabled: false
+    self_exclusion_center_x_fraction: 0.50
+    self_exclusion_center_y_fraction: 0.62
+    self_exclusion_width_fraction: 0.14
+    self_exclusion_height_fraction: 0.26
+    probe_offset_fractions: [0.0, -0.20, 0.20]
+    device: 0
+  hover_delay: 0.08
+  cursor_baseline_point: {x: 1280, y: 170}
+  require_mining_tooltip: true
+  require_cursor_change: true
+  require_classified_cursor_when_calibrated: false
+  tooltip_only_click_enabled: true
+  cursor_pixel_fallback_enabled: true
+  cursor_template_fallback_enabled: true
+  cursor_template_min_score: 0.62
+  cursor_template_margin: 0.04
+  cursor_color_fallback_enabled: false
+  cursor_only_click_enabled: true
+  cursor_only_confirm_frames: 3
+  cursor_candidate_extra_settle_enabled: true
+  cursor_candidate_extra_settle_frames: 4
+  cursor_candidate_extra_settle_seconds: 0.10
+  # RUN2 repeatedly had a native pickaxe cursor and Iron tooltip on the exact
+  # model proposal, but discarded that authority to recenter the world view.
+  # Click the already-confirmed screen point directly; WoW handles interaction
+  # facing, and the normal gather verification still rejects a failed click.
+  world_target_face_enabled: false
+  # Retained for offline experiments if facing is re-enabled. Direct
+  # screen-space X defines the correction; RUN8 proved route inversion wrong.
+  world_target_face_invert_turn_direction: false
+  world_target_center_x_fraction: 0.50
+  world_target_face_deadzone_fraction: 0.055
+  world_target_face_min_seconds: 0.05
+  world_target_face_max_seconds: 0.18
+  world_target_face_seconds_per_screen_width: 0.55
+  right_click_duration: 0.05
+  gather_wait_seconds: 3.0
+  verify_clear_frames: 2
+  verify_timeout_seconds: 6.0
+  verify_require_hover_clear: true
+  resume_projection_reached_distance: 0.45
+  tooltip_region: {x: 2380, y: 1010, width: 180, height: 130}
+  tooltip_regions:
+    - {x: 2380, y: 1010, width: 180, height: 130}
+    - {x: 2100, y: 1120, width: 350, height: 160}
+  tooltip_min_yellow_pixels: 18
+  tooltip_min_green_pixels: 18
+  # RUN1C Iron Deposit used a neutral-gray "Requires Mining" line rather than
+  # the green line seen in older captures. Permit that palette only in the
+  # actual lower-right tooltip ROI; the first ROI overlaps action-bar art.
+  tooltip_neutral_fallback_enabled: true
+  tooltip_neutral_fallback_region_indices: [1]
+  tooltip_min_neutral_pixels: 180
+  tooltip_min_dark_ratio: 0.20
+  reject_hostile_tooltip: true
+  hostile_tooltip_min_red_pixels: 12
+  hostile_tooltip_min_bottom_green_pixels: 55
+  cursor_pickaxe_detection_enabled: true
+  cursor_detection_radius: 64
+  cursor_min_metal_pixels: 14
+  cursor_min_amber_pixels: 4
+
+debug:
+  enabled: true
+  output_dir: debug_output

@@ -1,0 +1,45 @@
+{
+  "automatic_safe_backtracking_spurs": 0,
+  "reason": "Every terrain-rejected node lies beyond the accepted eight-cell approach radius. Exact reverse traversal cannot make an unsafe outbound leg safe.",
+  "live_spur_review_distance_cells": 16.0,
+  "live_spur_review_candidates": [
+    {
+      "coord": 4950644000,
+      "x": 49.5,
+      "y": 64.4,
+      "ore_type": "Iron",
+      "distance_to_active_component_cells": 9.1969,
+      "distance_to_active_component_world": 38.32,
+      "status": "live_spur_review_only"
+    },
+    {
+      "coord": 4530681000,
+      "x": 45.3,
+      "y": 68.1,
+      "ore_type": "Iron",
+      "distance_to_active_component_cells": 11.5876,
+      "distance_to_active_component_world": 48.28,
+      "status": "live_spur_review_only"
+    },
+    {
+      "coord": 4470821000,
+      "x": 44.7,
+      "y": 82.1,
+      "ore_type": "Truesilver",
+      "distance_to_active_component_cells": 14.9845,
+      "distance_to_active_component_world": 62.44,
+      "status": "live_spur_review_only"
+    }
+  ],
+  "terrain_rejected_distance_bands": {
+    "8_to_12_cells": 2,
+    "12_to_16_cells": 1,
+    "16_to_32_cells": 4,
+    "over_32_cells": 79
+  },
+  "route": "data\\routes\\generated\\desolace_shadowprey_to_kodo_north_topographic_cycle.json",
+  "source_spawn_count": 164,
+  "accepted_node_count": 6,
+  "spacing_rejected_count": 72,
+  "terrain_rejected_count": 86
+}

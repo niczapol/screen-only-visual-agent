@@ -1,0 +1,34 @@
+{
+  "status": "candidate_local_terrain_patrol",
+  "anchor_ui": [
+    39.41,
+    56.82
+  ],
+  "anchor_grid": [
+    749,
+    303
+  ],
+  "snapped_start_grid": [
+    749,
+    303
+  ],
+  "snapped_start_ui": [
+    39.411634,
+    56.81498
+  ],
+  "anchor_snap_cells": 0.0,
+  "terrain_safe_reachable_cells": 183,
+  "one_way_grid_cells": 36.799,
+  "route_waypoint_count": 63,
+  "route_grid_cells": 73.598,
+  "terrain_cost_config": {
+    "soft_slope_degrees": 12.0,
+    "hard_slope_degrees": 32.0,
+    "slope_weight": 12.0,
+    "roughness_weight": 0.12,
+    "clearance_cells": 5.0,
+    "clearance_weight": 9.0
+  },
+  "min_clearance": 1.0,
+  "max_radius_cells": 55
+}

@@ -1,0 +1,39 @@
+{
+  "excluded_coords": [
+    {
+      "coord": 4450228000,
+      "zone_id": 162,
+      "ore_type": "Gold",
+      "reason": "user_excluded_full_route_v5_44_50_22_80",
+      "created_at": "2026-08-10T00:00:00"
+    },
+    {
+      "coord": 3770210000,
+      "zone_id": 162,
+      "ore_type": "Gold",
+      "reason": "user_excluded_full_route_v5_37_70_21_00",
+      "created_at": "2026-08-10T00:00:00"
+    },
+    {
+      "coord": 3630201000,
+      "zone_id": 162,
+      "ore_type": "Gold",
+      "reason": "user_excluded_full_route_v5_36_30_20_10",
+      "created_at": "2026-08-10T00:00:00"
+    },
+    {
+      "coord": 3621201200,
+      "zone_id": 162,
+      "ore_type": "Gold",
+      "reason": "user_excluded_full_route_v5_36_21_20_12",
+      "created_at": "2026-08-10T00:00:00"
+    },
+    {
+      "coord": 4666298900,
+      "zone_id": 162,
+      "ore_type": "Truesilver",
+      "reason": "v0823_run5_node79_unreachable_ridge_access",
+      "created_at": "2026-08-17T00:00:00"
+    }
+  ]
+}

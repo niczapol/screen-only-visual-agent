@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: Screen Vision Telemetry
+## Notes: Fixed visible markers and zonal coordinates for screen-only runtime perception.
+## Author: Local project
+## Version: 0.4.5
+## DefaultState: enabled
+## OptionalDeps: TomTom
+
+ScreenVisionTelemetry.lua

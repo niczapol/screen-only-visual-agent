@@ -1,0 +1,556 @@
+{
+  "schema_version": 3,
+  "name": "desolace_kodo_graveyard_adt_validation_patrol",
+  "zone": {
+    "id": 102,
+    "name": "Desolace"
+  },
+  "mode": "cyclic",
+  "live_status": "candidate_local_terrain_patrol",
+  "source": {
+    "navigation": "external client ADT V9 slope/roughness/clearance",
+    "purpose": "local navigation/combat/recovery validation; not an ore farming cycle"
+  },
+  "generation": {
+    "status": "candidate_local_terrain_patrol",
+    "anchor_ui": [
+      39.41,
+      56.82
+    ],
+    "anchor_grid": [
+      749,
+      303
+    ],
+    "snapped_start_grid": [
+      749,
+      303
+    ],
+    "snapped_start_ui": [
+      39.411634,
+      56.81498
+    ],
+    "anchor_snap_cells": 0.0,
+    "terrain_safe_reachable_cells": 183,
+    "one_way_grid_cells": 36.799,
+    "route_waypoint_count": 63,
+    "route_grid_cells": 73.598,
+    "terrain_cost_config": {
+      "soft_slope_degrees": 12.0,
+      "hard_slope_degrees": 32.0,
+      "slope_weight": 12.0,
+      "roughness_weight": 0.12,
+      "clearance_cells": 5.0,
+      "clearance_weight": 9.0
+    },
+    "min_clearance": 1.0,
+    "max_radius_cells": 55
+  },
+  "route_loop": [
+    {
+      "index": 0,
+      "coord": 3941568100,
+      "x": 39.411634,
+      "y": 56.81498,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 1,
+      "coord": 3927567200,
+      "x": 39.272606,
+      "y": 56.722284,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 2,
+      "coord": 3913567200,
+      "x": 39.133578,
+      "y": 56.722284,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 3,
+      "coord": 3899566300,
+      "x": 38.99455,
+      "y": 56.629588,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 4,
+      "coord": 3886565400,
+      "x": 38.855522,
+      "y": 56.536893,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 5,
+      "coord": 3872564400,
+      "x": 38.716494,
+      "y": 56.444197,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 6,
+      "coord": 3858563500,
+      "x": 38.577466,
+      "y": 56.351502,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 7,
+      "coord": 3844562600,
+      "x": 38.438438,
+      "y": 56.258806,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 8,
+      "coord": 3830562600,
+      "x": 38.299411,
+      "y": 56.258806,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 9,
+      "coord": 3816562600,
+      "x": 38.160383,
+      "y": 56.258806,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 10,
+      "coord": 3802561700,
+      "x": 38.021355,
+      "y": 56.16611,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 11,
+      "coord": 3788561700,
+      "x": 37.882327,
+      "y": 56.16611,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 12,
+      "coord": 3774561700,
+      "x": 37.743299,
+      "y": 56.16611,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 13,
+      "coord": 3760561700,
+      "x": 37.604271,
+      "y": 56.16611,
+      "world_z": 212.2263,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 14,
+      "coord": 3747561700,
+      "x": 37.465243,
+      "y": 56.16611,
+      "world_z": 212.3554,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 15,
+      "coord": 3733561700,
+      "x": 37.326215,
+      "y": 56.16611,
+      "world_z": 212.4694,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 16,
+      "coord": 3719561700,
+      "x": 37.187187,
+      "y": 56.16611,
+      "world_z": 212.4309,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 17,
+      "coord": 3705561700,
+      "x": 37.048159,
+      "y": 56.16611,
+      "world_z": 212.4636,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 18,
+      "coord": 3691560700,
+      "x": 36.909131,
+      "y": 56.073415,
+      "world_z": 212.5703,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 19,
+      "coord": 3677560700,
+      "x": 36.770103,
+      "y": 56.073415,
+      "world_z": 212.4472,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 20,
+      "coord": 3663560700,
+      "x": 36.631076,
+      "y": 56.073415,
+      "world_z": 212.4447,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 21,
+      "coord": 3649559800,
+      "x": 36.492048,
+      "y": 55.980719,
+      "world_z": 212.93,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 22,
+      "coord": 3635558900,
+      "x": 36.35302,
+      "y": 55.888024,
+      "world_z": 213.2684,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 23,
+      "coord": 3621558000,
+      "x": 36.213992,
+      "y": 55.795328,
+      "world_z": 213.3347,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 24,
+      "coord": 3621557000,
+      "x": 36.213992,
+      "y": 55.702633,
+      "world_z": 213.3188,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 25,
+      "coord": 3621556100,
+      "x": 36.213992,
+      "y": 55.609937,
+      "world_z": 213.0869,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 26,
+      "coord": 3607555200,
+      "x": 36.074964,
+      "y": 55.517241,
+      "world_z": 212.3399,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 27,
+      "coord": 3594554200,
+      "x": 35.935936,
+      "y": 55.424546,
+      "world_z": 211.5698,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 28,
+      "coord": 3580554200,
+      "x": 35.796908,
+      "y": 55.424546,
+      "world_z": 211.6477,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 29,
+      "coord": 3566553300,
+      "x": 35.65788,
+      "y": 55.33185,
+      "world_z": 211.519,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 30,
+      "coord": 3566552400,
+      "x": 35.65788,
+      "y": 55.239155,
+      "world_z": 210.7377,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 31,
+      "coord": 3552552400,
+      "x": 35.518852,
+      "y": 55.239155,
+      "world_z": 211.6633,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 32,
+      "coord": 3566552400,
+      "x": 35.65788,
+      "y": 55.239155,
+      "world_z": 210.7377,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 33,
+      "coord": 3566553300,
+      "x": 35.65788,
+      "y": 55.33185,
+      "world_z": 211.519,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 34,
+      "coord": 3580554200,
+      "x": 35.796908,
+      "y": 55.424546,
+      "world_z": 211.6477,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 35,
+      "coord": 3594554200,
+      "x": 35.935936,
+      "y": 55.424546,
+      "world_z": 211.5698,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 36,
+      "coord": 3607555200,
+      "x": 36.074964,
+      "y": 55.517241,
+      "world_z": 212.3399,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 37,
+      "coord": 3621556100,
+      "x": 36.213992,
+      "y": 55.609937,
+      "world_z": 213.0869,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 38,
+      "coord": 3621557000,
+      "x": 36.213992,
+      "y": 55.702633,
+      "world_z": 213.3188,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 39,
+      "coord": 3621558000,
+      "x": 36.213992,
+      "y": 55.795328,
+      "world_z": 213.3347,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 40,
+      "coord": 3635558900,
+      "x": 36.35302,
+      "y": 55.888024,
+      "world_z": 213.2684,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 41,
+      "coord": 3649559800,
+      "x": 36.492048,
+      "y": 55.980719,
+      "world_z": 212.93,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 42,
+      "coord": 3663560700,
+      "x": 36.631076,
+      "y": 56.073415,
+      "world_z": 212.4447,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 43,
+      "coord": 3677560700,
+      "x": 36.770103,
+      "y": 56.073415,
+      "world_z": 212.4472,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 44,
+      "coord": 3691560700,
+      "x": 36.909131,
+      "y": 56.073415,
+      "world_z": 212.5703,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 45,
+      "coord": 3705561700,
+      "x": 37.048159,
+      "y": 56.16611,
+      "world_z": 212.4636,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 46,
+      "coord": 3719561700,
+      "x": 37.187187,
+      "y": 56.16611,
+      "world_z": 212.4309,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 47,
+      "coord": 3733561700,
+      "x": 37.326215,
+      "y": 56.16611,
+      "world_z": 212.4694,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 48,
+      "coord": 3747561700,
+      "x": 37.465243,
+      "y": 56.16611,
+      "world_z": 212.3554,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 49,
+      "coord": 3760561700,
+      "x": 37.604271,
+      "y": 56.16611,
+      "world_z": 212.2263,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 50,
+      "coord": 3774561700,
+      "x": 37.743299,
+      "y": 56.16611,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 51,
+      "coord": 3788561700,
+      "x": 37.882327,
+      "y": 56.16611,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 52,
+      "coord": 3802561700,
+      "x": 38.021355,
+      "y": 56.16611,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 53,
+      "coord": 3816562600,
+      "x": 38.160383,
+      "y": 56.258806,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 54,
+      "coord": 3830562600,
+      "x": 38.299411,
+      "y": 56.258806,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 55,
+      "coord": 3844562600,
+      "x": 38.438438,
+      "y": 56.258806,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 56,
+      "coord": 3858563500,
+      "x": 38.577466,
+      "y": 56.351502,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 57,
+      "coord": 3872564400,
+      "x": 38.716494,
+      "y": 56.444197,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 58,
+      "coord": 3886565400,
+      "x": 38.855522,
+      "y": 56.536893,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 59,
+      "coord": 3899566300,
+      "x": 38.99455,
+      "y": 56.629588,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 60,
+      "coord": 3913567200,
+      "x": 39.133578,
+      "y": 56.722284,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 61,
+      "coord": 3927567200,
+      "x": 39.272606,
+      "y": 56.722284,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    },
+    {
+      "index": 62,
+      "coord": 3941568100,
+      "x": 39.411634,
+      "y": 56.81498,
+      "world_z": 212.2026,
+      "source": "ascension_adt_local_patrol"
+    }
+  ],
+  "route_nodes": [],
+  "rejected_nodes": []
+}

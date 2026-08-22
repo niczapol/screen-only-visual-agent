@@ -1,0 +1,22 @@
+{
+  "schema_version": 3,
+  "name": "desolace_sartheris_graveyard_live_control_loop",
+  "zone": {
+    "id": 102,
+    "name": "Desolace"
+  },
+  "mode": "blocked",
+  "live_status": "rejected_live_wall_and_hostile_camp",
+  "source": {
+    "navigation": "screen-anchored local control points",
+    "purpose": "rejected live waypoint regression fixture; never use as a runtime route"
+  },
+  "route_loop": [
+    {"index": 0, "coord": 3861594400, "x": 38.61, "y": 59.44, "source": "live_control_waypoint"},
+    {"index": 1, "coord": 3880594400, "x": 38.80, "y": 59.44, "source": "live_control_waypoint"},
+    {"index": 2, "coord": 3880596500, "x": 38.80, "y": 59.65, "source": "live_control_waypoint"},
+    {"index": 3, "coord": 3861596500, "x": 38.61, "y": 59.65, "source": "live_control_waypoint"}
+  ],
+  "route_nodes": [],
+  "rejected_nodes": []
+}

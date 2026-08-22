@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "output_name": "desolace_shadowprey_to_kodo_north_topographic_cycle",
+  "zone": {
+    "id": 102,
+    "name": "Desolace"
+  },
+  "status": "candidate_world_map_road_entry",
+  "waypoint_source": "reviewed_world_map_road_entry",
+  "anchor_ui": [29.81, 74.96],
+  "evidence": {
+    "world_map_frame": "debug_output/v03_desolace_world_map.png",
+    "review_overlay": "debug_output/v03_world_map_road_candidate.png",
+    "terrain_profile": "diagnostic least-cost path at 60-degree ceiling, manually retained only where it follows the visible zone road",
+    "acceptance": "Must pass live waypoint-by-waypoint with zero skipped entry targets before the six-node loop is evaluated"
+  },
+  "waypoints": [
+    {"x": 29.81, "y": 74.96},
+    {"x": 31.90, "y": 75.40},
+    {"x": 34.10, "y": 75.40},
+    {"x": 36.40, "y": 75.40},
+    {"x": 38.30, "y": 75.80},
+    {"x": 39.30, "y": 76.70},
+    {"x": 41.40, "y": 76.90},
+    {"x": 42.70, "y": 77.90},
+    {"x": 43.30, "y": 79.30},
+    {"x": 44.60, "y": 80.50},
+    {"x": 45.90, "y": 79.80},
+    {"x": 46.60, "y": 78.40},
+    {"x": 46.90, "y": 77.00},
+    {"x": 47.10, "y": 75.60},
+    {"x": 48.00, "y": 74.30},
+    {"x": 49.00, "y": 73.10},
+    {"x": 50.50, "y": 72.10},
+    {"x": 52.10, "y": 71.10},
+    {"x": 53.30, "y": 69.90},
+    {"x": 53.70, "y": 68.50},
+    {"x": 55.30, "y": 67.50},
+    {"x": 56.80, "y": 66.50},
+    {"x": 57.10, "y": 65.10},
+    {"x": 56.10, "y": 63.80},
+    {"x": 54.10, "y": 63.10},
+    {"x": 51.90, "y": 63.10},
+    {"x": 50.28, "y": 63.10}
+  ]
+}

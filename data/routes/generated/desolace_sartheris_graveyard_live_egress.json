@@ -1,0 +1,20 @@
+{
+  "schema_version": 3,
+  "name": "desolace_sartheris_graveyard_live_egress",
+  "zone": {
+    "id": 102,
+    "name": "Desolace"
+  },
+  "mode": "ordered",
+  "live_status": "candidate_from_observed_traversal",
+  "source": {
+    "navigation": "waypoints reached during live_v03_sartheris_control_loop_20260801",
+    "purpose": "bounded return from the hostile camp to the Sar'theris graveyard"
+  },
+  "route_loop": [
+    {"index": 0, "coord": 3861596500, "x": 38.61, "y": 59.65, "source": "live_observed_waypoint"},
+    {"index": 1, "coord": 3861594400, "x": 38.61, "y": 59.44, "source": "live_observed_waypoint"}
+  ],
+  "route_nodes": [],
+  "rejected_nodes": []
+}

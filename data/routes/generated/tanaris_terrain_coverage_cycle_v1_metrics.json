@@ -1,0 +1,1529 @@
+{
+  "schema_version": 1,
+  "status": "offline_analysis_candidate_not_live_validated",
+  "zone": "Tanaris",
+  "source_node_count": 263,
+  "human_reference_covered_count": 104,
+  "human_reference_coverage_fraction": 0.395437,
+  "terrain_candidate_count": 251,
+  "no_terrain_candidate_count": 12,
+  "no_coverage_candidate_count": 12,
+  "set_cover_unresolved_count": 0,
+  "final_covered_count": 251,
+  "final_coverage_fraction": 0.954373,
+  "reveal_radius_yards": 50.0,
+  "reveal_radius_cells": 12.0,
+  "human_candidate_count": 339,
+  "human_anchor_count": 33,
+  "added_scan_point_count": 97,
+  "repair_scan_point_count": 0,
+  "total_scan_point_count": 130,
+  "route_waypoint_count": 642,
+  "route_length_yards": 31985.006,
+  "human_reference_path_length_yards": 13894.162,
+  "human_reference_duration_seconds": 1013.0,
+  "human_reference_average_speed_yards_per_second": 13.7159,
+  "estimated_cycle_minutes_at_human_average_speed": 38.866,
+  "route_slope_mean_degrees": 6.493,
+  "route_slope_max_degrees": 31.1395,
+  "walkable_component_cells": 368413,
+  "grid_bounds": [
+    201,
+    974,
+    207,
+    1045
+  ],
+  "anchor_grid": [
+    291,
+    638
+  ],
+  "terrain_config": {
+    "soft_slope_degrees": 15.0,
+    "hard_slope_degrees": 35.0,
+    "slope_weight": 8.0,
+    "roughness_weight": 0.08,
+    "clearance_cells": 3.0,
+    "clearance_weight": 5.0
+  },
+  "node_access_plans": {
+    "enabled": true,
+    "method": "coverage_route_attachment_angular_candidates",
+    "planned_node_count": 212,
+    "failure_count": 39,
+    "option_count": 572,
+    "facing_aligned_option_count": 454,
+    "max_options_per_node": 3,
+    "access_radius_cells": 4.32,
+    "failures": [
+      {
+        "index": 2,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 4,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 8,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 11,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 14,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 16,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 33,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 67,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 81,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 92,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 100,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 103,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 104,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 109,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 110,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 114,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 116,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 118,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 125,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 127,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 142,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 146,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 151,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 153,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 154,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 155,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 173,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 179,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 185,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 186,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 187,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 190,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 198,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 210,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 223,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 230,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 246,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 247,
+        "reason": "no_walkable_approach"
+      },
+      {
+        "index": 249,
+        "reason": "no_walkable_approach"
+      }
+    ]
+  },
+  "segments": [
+    {
+      "index": 0,
+      "start_scan_index": 0,
+      "end_scan_index": 1,
+      "search_mode": "margin_96",
+      "raw_point_count": 34,
+      "simplified_point_count": 5,
+      "world_length_yards": 142.056,
+      "terrain_cost": 41.008
+    },
+    {
+      "index": 1,
+      "start_scan_index": 1,
+      "end_scan_index": 2,
+      "search_mode": "margin_96",
+      "raw_point_count": 138,
+      "simplified_point_count": 12,
+      "world_length_yards": 601.264,
+      "terrain_cost": 162.535
+    },
+    {
+      "index": 2,
+      "start_scan_index": 2,
+      "end_scan_index": 3,
+      "search_mode": "margin_96",
+      "raw_point_count": 63,
+      "simplified_point_count": 6,
+      "world_length_yards": 276.353,
+      "terrain_cost": 80.616
+    },
+    {
+      "index": 3,
+      "start_scan_index": 3,
+      "end_scan_index": 4,
+      "search_mode": "margin_96",
+      "raw_point_count": 14,
+      "simplified_point_count": 3,
+      "world_length_yards": 56.898,
+      "terrain_cost": 18.622
+    },
+    {
+      "index": 4,
+      "start_scan_index": 4,
+      "end_scan_index": 5,
+      "search_mode": "margin_96",
+      "raw_point_count": 9,
+      "simplified_point_count": 3,
+      "world_length_yards": 35.814,
+      "terrain_cost": 12.609
+    },
+    {
+      "index": 5,
+      "start_scan_index": 5,
+      "end_scan_index": 6,
+      "search_mode": "margin_96",
+      "raw_point_count": 49,
+      "simplified_point_count": 5,
+      "world_length_yards": 207.869,
+      "terrain_cost": 59.436
+    },
+    {
+      "index": 6,
+      "start_scan_index": 6,
+      "end_scan_index": 7,
+      "search_mode": "margin_96",
+      "raw_point_count": 50,
+      "simplified_point_count": 6,
+      "world_length_yards": 213.465,
+      "terrain_cost": 61.126
+    },
+    {
+      "index": 7,
+      "start_scan_index": 7,
+      "end_scan_index": 8,
+      "search_mode": "margin_96",
+      "raw_point_count": 33,
+      "simplified_point_count": 4,
+      "world_length_yards": 170.63,
+      "terrain_cost": 45.092
+    },
+    {
+      "index": 8,
+      "start_scan_index": 8,
+      "end_scan_index": 9,
+      "search_mode": "margin_96",
+      "raw_point_count": 60,
+      "simplified_point_count": 6,
+      "world_length_yards": 323.937,
+      "terrain_cost": 82.463
+    },
+    {
+      "index": 9,
+      "start_scan_index": 9,
+      "end_scan_index": 10,
+      "search_mode": "margin_96",
+      "raw_point_count": 31,
+      "simplified_point_count": 4,
+      "world_length_yards": 135.805,
+      "terrain_cost": 36.847
+    },
+    {
+      "index": 10,
+      "start_scan_index": 10,
+      "end_scan_index": 11,
+      "search_mode": "margin_96",
+      "raw_point_count": 30,
+      "simplified_point_count": 5,
+      "world_length_yards": 143.21,
+      "terrain_cost": 40.234
+    },
+    {
+      "index": 11,
+      "start_scan_index": 11,
+      "end_scan_index": 12,
+      "search_mode": "margin_96",
+      "raw_point_count": 45,
+      "simplified_point_count": 5,
+      "world_length_yards": 223.535,
+      "terrain_cost": 61.545
+    },
+    {
+      "index": 12,
+      "start_scan_index": 12,
+      "end_scan_index": 13,
+      "search_mode": "margin_96",
+      "raw_point_count": 29,
+      "simplified_point_count": 3,
+      "world_length_yards": 118.205,
+      "terrain_cost": 36.675
+    },
+    {
+      "index": 13,
+      "start_scan_index": 13,
+      "end_scan_index": 14,
+      "search_mode": "margin_96",
+      "raw_point_count": 29,
+      "simplified_point_count": 4,
+      "world_length_yards": 119.072,
+      "terrain_cost": 37.377
+    },
+    {
+      "index": 14,
+      "start_scan_index": 14,
+      "end_scan_index": 15,
+      "search_mode": "margin_96",
+      "raw_point_count": 18,
+      "simplified_point_count": 4,
+      "world_length_yards": 77.151,
+      "terrain_cost": 26.47
+    },
+    {
+      "index": 15,
+      "start_scan_index": 15,
+      "end_scan_index": 16,
+      "search_mode": "margin_96",
+      "raw_point_count": 18,
+      "simplified_point_count": 3,
+      "world_length_yards": 94.864,
+      "terrain_cost": 25.334
+    },
+    {
+      "index": 16,
+      "start_scan_index": 16,
+      "end_scan_index": 17,
+      "search_mode": "margin_96",
+      "raw_point_count": 26,
+      "simplified_point_count": 3,
+      "world_length_yards": 117.844,
+      "terrain_cost": 32.744
+    },
+    {
+      "index": 17,
+      "start_scan_index": 17,
+      "end_scan_index": 18,
+      "search_mode": "margin_96",
+      "raw_point_count": 68,
+      "simplified_point_count": 6,
+      "world_length_yards": 309.702,
+      "terrain_cost": 84.383
+    },
+    {
+      "index": 18,
+      "start_scan_index": 18,
+      "end_scan_index": 19,
+      "search_mode": "margin_96",
+      "raw_point_count": 30,
+      "simplified_point_count": 4,
+      "world_length_yards": 130.958,
+      "terrain_cost": 35.66
+    },
+    {
+      "index": 19,
+      "start_scan_index": 19,
+      "end_scan_index": 20,
+      "search_mode": "margin_96",
+      "raw_point_count": 25,
+      "simplified_point_count": 3,
+      "world_length_yards": 117.999,
+      "terrain_cost": 32.989
+    },
+    {
+      "index": 20,
+      "start_scan_index": 20,
+      "end_scan_index": 21,
+      "search_mode": "margin_96",
+      "raw_point_count": 22,
+      "simplified_point_count": 3,
+      "world_length_yards": 89.684,
+      "terrain_cost": 26.863
+    },
+    {
+      "index": 21,
+      "start_scan_index": 21,
+      "end_scan_index": 22,
+      "search_mode": "margin_96",
+      "raw_point_count": 35,
+      "simplified_point_count": 5,
+      "world_length_yards": 151.45,
+      "terrain_cost": 44.515
+    },
+    {
+      "index": 22,
+      "start_scan_index": 22,
+      "end_scan_index": 23,
+      "search_mode": "margin_96",
+      "raw_point_count": 35,
+      "simplified_point_count": 4,
+      "world_length_yards": 176.643,
+      "terrain_cost": 50.899
+    },
+    {
+      "index": 23,
+      "start_scan_index": 23,
+      "end_scan_index": 24,
+      "search_mode": "margin_96",
+      "raw_point_count": 55,
+      "simplified_point_count": 6,
+      "world_length_yards": 262.96,
+      "terrain_cost": 71.99
+    },
+    {
+      "index": 24,
+      "start_scan_index": 24,
+      "end_scan_index": 25,
+      "search_mode": "margin_96",
+      "raw_point_count": 47,
+      "simplified_point_count": 5,
+      "world_length_yards": 199.886,
+      "terrain_cost": 58.289
+    },
+    {
+      "index": 25,
+      "start_scan_index": 25,
+      "end_scan_index": 26,
+      "search_mode": "margin_96",
+      "raw_point_count": 41,
+      "simplified_point_count": 5,
+      "world_length_yards": 202.835,
+      "terrain_cost": 54.182
+    },
+    {
+      "index": 26,
+      "start_scan_index": 26,
+      "end_scan_index": 27,
+      "search_mode": "margin_96",
+      "raw_point_count": 15,
+      "simplified_point_count": 4,
+      "world_length_yards": 70.056,
+      "terrain_cost": 21.954
+    },
+    {
+      "index": 27,
+      "start_scan_index": 27,
+      "end_scan_index": 28,
+      "search_mode": "margin_96",
+      "raw_point_count": 71,
+      "simplified_point_count": 8,
+      "world_length_yards": 319.879,
+      "terrain_cost": 94.452
+    },
+    {
+      "index": 28,
+      "start_scan_index": 28,
+      "end_scan_index": 29,
+      "search_mode": "margin_96",
+      "raw_point_count": 27,
+      "simplified_point_count": 5,
+      "world_length_yards": 120.552,
+      "terrain_cost": 48.134
+    },
+    {
+      "index": 29,
+      "start_scan_index": 29,
+      "end_scan_index": 30,
+      "search_mode": "margin_96",
+      "raw_point_count": 38,
+      "simplified_point_count": 5,
+      "world_length_yards": 180.076,
+      "terrain_cost": 60.158
+    },
+    {
+      "index": 30,
+      "start_scan_index": 30,
+      "end_scan_index": 31,
+      "search_mode": "margin_96",
+      "raw_point_count": 25,
+      "simplified_point_count": 3,
+      "world_length_yards": 113.388,
+      "terrain_cost": 33.6
+    },
+    {
+      "index": 31,
+      "start_scan_index": 31,
+      "end_scan_index": 32,
+      "search_mode": "margin_96",
+      "raw_point_count": 36,
+      "simplified_point_count": 6,
+      "world_length_yards": 162.91,
+      "terrain_cost": 58.321
+    },
+    {
+      "index": 32,
+      "start_scan_index": 32,
+      "end_scan_index": 33,
+      "search_mode": "margin_96",
+      "raw_point_count": 29,
+      "simplified_point_count": 5,
+      "world_length_yards": 131.199,
+      "terrain_cost": 49.716
+    },
+    {
+      "index": 33,
+      "start_scan_index": 33,
+      "end_scan_index": 34,
+      "search_mode": "margin_96",
+      "raw_point_count": 141,
+      "simplified_point_count": 13,
+      "world_length_yards": 713.877,
+      "terrain_cost": 189.401
+    },
+    {
+      "index": 34,
+      "start_scan_index": 34,
+      "end_scan_index": 35,
+      "search_mode": "margin_96",
+      "raw_point_count": 34,
+      "simplified_point_count": 4,
+      "world_length_yards": 141.696,
+      "terrain_cost": 37.452
+    },
+    {
+      "index": 35,
+      "start_scan_index": 35,
+      "end_scan_index": 36,
+      "search_mode": "margin_96",
+      "raw_point_count": 83,
+      "simplified_point_count": 8,
+      "world_length_yards": 358.303,
+      "terrain_cost": 94.203
+    },
+    {
+      "index": 36,
+      "start_scan_index": 36,
+      "end_scan_index": 37,
+      "search_mode": "margin_96",
+      "raw_point_count": 42,
+      "simplified_point_count": 5,
+      "world_length_yards": 197.888,
+      "terrain_cost": 57.441
+    },
+    {
+      "index": 37,
+      "start_scan_index": 37,
+      "end_scan_index": 38,
+      "search_mode": "margin_96",
+      "raw_point_count": 37,
+      "simplified_point_count": 5,
+      "world_length_yards": 172.444,
+      "terrain_cost": 51.071
+    },
+    {
+      "index": 38,
+      "start_scan_index": 38,
+      "end_scan_index": 39,
+      "search_mode": "margin_96",
+      "raw_point_count": 178,
+      "simplified_point_count": 15,
+      "world_length_yards": 815.358,
+      "terrain_cost": 234.342
+    },
+    {
+      "index": 39,
+      "start_scan_index": 39,
+      "end_scan_index": 40,
+      "search_mode": "margin_96",
+      "raw_point_count": 50,
+      "simplified_point_count": 5,
+      "world_length_yards": 208.101,
+      "terrain_cost": 58.649
+    },
+    {
+      "index": 40,
+      "start_scan_index": 40,
+      "end_scan_index": 41,
+      "search_mode": "margin_96",
+      "raw_point_count": 30,
+      "simplified_point_count": 5,
+      "world_length_yards": 127.61,
+      "terrain_cost": 35.221
+    },
+    {
+      "index": 41,
+      "start_scan_index": 41,
+      "end_scan_index": 42,
+      "search_mode": "margin_96",
+      "raw_point_count": 145,
+      "simplified_point_count": 13,
+      "world_length_yards": 634.204,
+      "terrain_cost": 179.627
+    },
+    {
+      "index": 42,
+      "start_scan_index": 42,
+      "end_scan_index": 43,
+      "search_mode": "margin_96",
+      "raw_point_count": 66,
+      "simplified_point_count": 7,
+      "world_length_yards": 272.386,
+      "terrain_cost": 84.127
+    },
+    {
+      "index": 43,
+      "start_scan_index": 43,
+      "end_scan_index": 44,
+      "search_mode": "margin_96",
+      "raw_point_count": 64,
+      "simplified_point_count": 7,
+      "world_length_yards": 330.799,
+      "terrain_cost": 89.855
+    },
+    {
+      "index": 44,
+      "start_scan_index": 44,
+      "end_scan_index": 45,
+      "search_mode": "margin_96",
+      "raw_point_count": 127,
+      "simplified_point_count": 12,
+      "world_length_yards": 582.938,
+      "terrain_cost": 154.915
+    },
+    {
+      "index": 45,
+      "start_scan_index": 45,
+      "end_scan_index": 46,
+      "search_mode": "margin_96",
+      "raw_point_count": 57,
+      "simplified_point_count": 6,
+      "world_length_yards": 253.995,
+      "terrain_cost": 69.188
+    },
+    {
+      "index": 46,
+      "start_scan_index": 46,
+      "end_scan_index": 47,
+      "search_mode": "margin_96",
+      "raw_point_count": 98,
+      "simplified_point_count": 9,
+      "world_length_yards": 428.485,
+      "terrain_cost": 116.724
+    },
+    {
+      "index": 47,
+      "start_scan_index": 47,
+      "end_scan_index": 48,
+      "search_mode": "margin_96",
+      "raw_point_count": 15,
+      "simplified_point_count": 3,
+      "world_length_yards": 65.687,
+      "terrain_cost": 21.12
+    },
+    {
+      "index": 48,
+      "start_scan_index": 48,
+      "end_scan_index": 49,
+      "search_mode": "margin_96",
+      "raw_point_count": 30,
+      "simplified_point_count": 3,
+      "world_length_yards": 123.395,
+      "terrain_cost": 36.459
+    },
+    {
+      "index": 49,
+      "start_scan_index": 49,
+      "end_scan_index": 50,
+      "search_mode": "margin_96",
+      "raw_point_count": 15,
+      "simplified_point_count": 2,
+      "world_length_yards": 63.465,
+      "terrain_cost": 17.432
+    },
+    {
+      "index": 50,
+      "start_scan_index": 50,
+      "end_scan_index": 51,
+      "search_mode": "margin_96",
+      "raw_point_count": 20,
+      "simplified_point_count": 4,
+      "world_length_yards": 84.573,
+      "terrain_cost": 24.906
+    },
+    {
+      "index": 51,
+      "start_scan_index": 51,
+      "end_scan_index": 52,
+      "search_mode": "margin_96",
+      "raw_point_count": 43,
+      "simplified_point_count": 6,
+      "world_length_yards": 183.419,
+      "terrain_cost": 53.3
+    },
+    {
+      "index": 52,
+      "start_scan_index": 52,
+      "end_scan_index": 53,
+      "search_mode": "margin_96",
+      "raw_point_count": 29,
+      "simplified_point_count": 6,
+      "world_length_yards": 123.226,
+      "terrain_cost": 36.358
+    },
+    {
+      "index": 53,
+      "start_scan_index": 53,
+      "end_scan_index": 54,
+      "search_mode": "margin_96",
+      "raw_point_count": 58,
+      "simplified_point_count": 5,
+      "world_length_yards": 238.918,
+      "terrain_cost": 70.954
+    },
+    {
+      "index": 54,
+      "start_scan_index": 54,
+      "end_scan_index": 55,
+      "search_mode": "margin_96",
+      "raw_point_count": 95,
+      "simplified_point_count": 9,
+      "world_length_yards": 458.702,
+      "terrain_cost": 128.339
+    },
+    {
+      "index": 55,
+      "start_scan_index": 55,
+      "end_scan_index": 56,
+      "search_mode": "margin_96",
+      "raw_point_count": 28,
+      "simplified_point_count": 4,
+      "world_length_yards": 136.616,
+      "terrain_cost": 36.533
+    },
+    {
+      "index": 56,
+      "start_scan_index": 56,
+      "end_scan_index": 57,
+      "search_mode": "margin_96",
+      "raw_point_count": 61,
+      "simplified_point_count": 5,
+      "world_length_yards": 258.676,
+      "terrain_cost": 67.964
+    },
+    {
+      "index": 57,
+      "start_scan_index": 57,
+      "end_scan_index": 58,
+      "search_mode": "margin_96",
+      "raw_point_count": 29,
+      "simplified_point_count": 4,
+      "world_length_yards": 147.879,
+      "terrain_cost": 39.256
+    },
+    {
+      "index": 58,
+      "start_scan_index": 58,
+      "end_scan_index": 59,
+      "search_mode": "margin_96",
+      "raw_point_count": 18,
+      "simplified_point_count": 3,
+      "world_length_yards": 70.972,
+      "terrain_cost": 21.454
+    },
+    {
+      "index": 59,
+      "start_scan_index": 59,
+      "end_scan_index": 60,
+      "search_mode": "margin_96",
+      "raw_point_count": 87,
+      "simplified_point_count": 9,
+      "world_length_yards": 398.539,
+      "terrain_cost": 121.727
+    },
+    {
+      "index": 60,
+      "start_scan_index": 60,
+      "end_scan_index": 61,
+      "search_mode": "margin_96",
+      "raw_point_count": 36,
+      "simplified_point_count": 4,
+      "world_length_yards": 146.111,
+      "terrain_cost": 40.889
+    },
+    {
+      "index": 61,
+      "start_scan_index": 61,
+      "end_scan_index": 62,
+      "search_mode": "margin_96",
+      "raw_point_count": 19,
+      "simplified_point_count": 3,
+      "world_length_yards": 96.551,
+      "terrain_cost": 25.443
+    },
+    {
+      "index": 62,
+      "start_scan_index": 62,
+      "end_scan_index": 63,
+      "search_mode": "margin_96",
+      "raw_point_count": 21,
+      "simplified_point_count": 3,
+      "world_length_yards": 87.127,
+      "terrain_cost": 23.862
+    },
+    {
+      "index": 63,
+      "start_scan_index": 63,
+      "end_scan_index": 64,
+      "search_mode": "margin_96",
+      "raw_point_count": 28,
+      "simplified_point_count": 3,
+      "world_length_yards": 115.343,
+      "terrain_cost": 33.422
+    },
+    {
+      "index": 64,
+      "start_scan_index": 64,
+      "end_scan_index": 65,
+      "search_mode": "margin_96",
+      "raw_point_count": 12,
+      "simplified_point_count": 2,
+      "world_length_yards": 52.208,
+      "terrain_cost": 17.051
+    },
+    {
+      "index": 65,
+      "start_scan_index": 65,
+      "end_scan_index": 66,
+      "search_mode": "margin_96",
+      "raw_point_count": 33,
+      "simplified_point_count": 5,
+      "world_length_yards": 167.525,
+      "terrain_cost": 48.499
+    },
+    {
+      "index": 66,
+      "start_scan_index": 66,
+      "end_scan_index": 67,
+      "search_mode": "margin_96",
+      "raw_point_count": 19,
+      "simplified_point_count": 3,
+      "world_length_yards": 84.435,
+      "terrain_cost": 21.744
+    },
+    {
+      "index": 67,
+      "start_scan_index": 67,
+      "end_scan_index": 68,
+      "search_mode": "margin_96",
+      "raw_point_count": 81,
+      "simplified_point_count": 7,
+      "world_length_yards": 355.486,
+      "terrain_cost": 102.183
+    },
+    {
+      "index": 68,
+      "start_scan_index": 68,
+      "end_scan_index": 69,
+      "search_mode": "margin_96",
+      "raw_point_count": 23,
+      "simplified_point_count": 3,
+      "world_length_yards": 99.474,
+      "terrain_cost": 29.635
+    },
+    {
+      "index": 69,
+      "start_scan_index": 69,
+      "end_scan_index": 70,
+      "search_mode": "margin_96",
+      "raw_point_count": 44,
+      "simplified_point_count": 4,
+      "world_length_yards": 191.139,
+      "terrain_cost": 54.579
+    },
+    {
+      "index": 70,
+      "start_scan_index": 70,
+      "end_scan_index": 71,
+      "search_mode": "margin_96",
+      "raw_point_count": 201,
+      "simplified_point_count": 17,
+      "world_length_yards": 941.217,
+      "terrain_cost": 272.944
+    },
+    {
+      "index": 71,
+      "start_scan_index": 71,
+      "end_scan_index": 72,
+      "search_mode": "margin_96",
+      "raw_point_count": 175,
+      "simplified_point_count": 15,
+      "world_length_yards": 804.504,
+      "terrain_cost": 230.077
+    },
+    {
+      "index": 72,
+      "start_scan_index": 72,
+      "end_scan_index": 73,
+      "search_mode": "margin_96",
+      "raw_point_count": 41,
+      "simplified_point_count": 4,
+      "world_length_yards": 187.817,
+      "terrain_cost": 61.777
+    },
+    {
+      "index": 73,
+      "start_scan_index": 73,
+      "end_scan_index": 74,
+      "search_mode": "margin_96",
+      "raw_point_count": 127,
+      "simplified_point_count": 11,
+      "world_length_yards": 586.971,
+      "terrain_cost": 183.103
+    },
+    {
+      "index": 74,
+      "start_scan_index": 74,
+      "end_scan_index": 75,
+      "search_mode": "margin_96",
+      "raw_point_count": 38,
+      "simplified_point_count": 9,
+      "world_length_yards": 176.178,
+      "terrain_cost": 80.723
+    },
+    {
+      "index": 75,
+      "start_scan_index": 75,
+      "end_scan_index": 76,
+      "search_mode": "margin_96",
+      "raw_point_count": 74,
+      "simplified_point_count": 11,
+      "world_length_yards": 322.471,
+      "terrain_cost": 126.724
+    },
+    {
+      "index": 76,
+      "start_scan_index": 76,
+      "end_scan_index": 77,
+      "search_mode": "margin_96",
+      "raw_point_count": 162,
+      "simplified_point_count": 15,
+      "world_length_yards": 715.786,
+      "terrain_cost": 233.926
+    },
+    {
+      "index": 77,
+      "start_scan_index": 77,
+      "end_scan_index": 78,
+      "search_mode": "margin_96",
+      "raw_point_count": 29,
+      "simplified_point_count": 4,
+      "world_length_yards": 120.757,
+      "terrain_cost": 58.16
+    },
+    {
+      "index": 78,
+      "start_scan_index": 78,
+      "end_scan_index": 79,
+      "search_mode": "margin_96",
+      "raw_point_count": 28,
+      "simplified_point_count": 3,
+      "world_length_yards": 121.623,
+      "terrain_cost": 35.178
+    },
+    {
+      "index": 79,
+      "start_scan_index": 79,
+      "end_scan_index": 80,
+      "search_mode": "margin_96",
+      "raw_point_count": 34,
+      "simplified_point_count": 5,
+      "world_length_yards": 156.569,
+      "terrain_cost": 46.192
+    },
+    {
+      "index": 80,
+      "start_scan_index": 80,
+      "end_scan_index": 81,
+      "search_mode": "margin_96",
+      "raw_point_count": 70,
+      "simplified_point_count": 7,
+      "world_length_yards": 311.828,
+      "terrain_cost": 102.267
+    },
+    {
+      "index": 81,
+      "start_scan_index": 81,
+      "end_scan_index": 82,
+      "search_mode": "margin_96",
+      "raw_point_count": 33,
+      "simplified_point_count": 6,
+      "world_length_yards": 146.271,
+      "terrain_cost": 53.092
+    },
+    {
+      "index": 82,
+      "start_scan_index": 82,
+      "end_scan_index": 83,
+      "search_mode": "margin_96",
+      "raw_point_count": 57,
+      "simplified_point_count": 6,
+      "world_length_yards": 256.913,
+      "terrain_cost": 81.789
+    },
+    {
+      "index": 83,
+      "start_scan_index": 83,
+      "end_scan_index": 84,
+      "search_mode": "margin_96",
+      "raw_point_count": 45,
+      "simplified_point_count": 6,
+      "world_length_yards": 214.689,
+      "terrain_cost": 64.833
+    },
+    {
+      "index": 84,
+      "start_scan_index": 84,
+      "end_scan_index": 85,
+      "search_mode": "margin_96",
+      "raw_point_count": 48,
+      "simplified_point_count": 5,
+      "world_length_yards": 224.185,
+      "terrain_cost": 74.999
+    },
+    {
+      "index": 85,
+      "start_scan_index": 85,
+      "end_scan_index": 86,
+      "search_mode": "margin_96",
+      "raw_point_count": 194,
+      "simplified_point_count": 17,
+      "world_length_yards": 851.642,
+      "terrain_cost": 251.013
+    },
+    {
+      "index": 86,
+      "start_scan_index": 86,
+      "end_scan_index": 87,
+      "search_mode": "margin_96",
+      "raw_point_count": 62,
+      "simplified_point_count": 8,
+      "world_length_yards": 272.527,
+      "terrain_cost": 87.202
+    },
+    {
+      "index": 87,
+      "start_scan_index": 87,
+      "end_scan_index": 88,
+      "search_mode": "margin_96",
+      "raw_point_count": 50,
+      "simplified_point_count": 5,
+      "world_length_yards": 207.195,
+      "terrain_cost": 57.619
+    },
+    {
+      "index": 88,
+      "start_scan_index": 88,
+      "end_scan_index": 89,
+      "search_mode": "margin_96",
+      "raw_point_count": 68,
+      "simplified_point_count": 7,
+      "world_length_yards": 302.537,
+      "terrain_cost": 83.997
+    },
+    {
+      "index": 89,
+      "start_scan_index": 89,
+      "end_scan_index": 90,
+      "search_mode": "margin_96",
+      "raw_point_count": 55,
+      "simplified_point_count": 6,
+      "world_length_yards": 229.327,
+      "terrain_cost": 64.722
+    },
+    {
+      "index": 90,
+      "start_scan_index": 90,
+      "end_scan_index": 91,
+      "search_mode": "margin_96",
+      "raw_point_count": 67,
+      "simplified_point_count": 7,
+      "world_length_yards": 366.461,
+      "terrain_cost": 96.653
+    },
+    {
+      "index": 91,
+      "start_scan_index": 91,
+      "end_scan_index": 92,
+      "search_mode": "margin_96",
+      "raw_point_count": 75,
+      "simplified_point_count": 7,
+      "world_length_yards": 328.576,
+      "terrain_cost": 94.346
+    },
+    {
+      "index": 92,
+      "start_scan_index": 92,
+      "end_scan_index": 93,
+      "search_mode": "margin_96",
+      "raw_point_count": 84,
+      "simplified_point_count": 8,
+      "world_length_yards": 353.407,
+      "terrain_cost": 96.935
+    },
+    {
+      "index": 93,
+      "start_scan_index": 93,
+      "end_scan_index": 94,
+      "search_mode": "margin_96",
+      "raw_point_count": 33,
+      "simplified_point_count": 4,
+      "world_length_yards": 140.417,
+      "terrain_cost": 54.673
+    },
+    {
+      "index": 94,
+      "start_scan_index": 94,
+      "end_scan_index": 95,
+      "search_mode": "margin_96",
+      "raw_point_count": 78,
+      "simplified_point_count": 8,
+      "world_length_yards": 369.062,
+      "terrain_cost": 103.471
+    },
+    {
+      "index": 95,
+      "start_scan_index": 95,
+      "end_scan_index": 96,
+      "search_mode": "margin_96",
+      "raw_point_count": 24,
+      "simplified_point_count": 3,
+      "world_length_yards": 104.747,
+      "terrain_cost": 39.298
+    },
+    {
+      "index": 96,
+      "start_scan_index": 96,
+      "end_scan_index": 97,
+      "search_mode": "margin_96",
+      "raw_point_count": 20,
+      "simplified_point_count": 4,
+      "world_length_yards": 104.303,
+      "terrain_cost": 33.592
+    },
+    {
+      "index": 97,
+      "start_scan_index": 97,
+      "end_scan_index": 98,
+      "search_mode": "margin_96",
+      "raw_point_count": 54,
+      "simplified_point_count": 6,
+      "world_length_yards": 240.59,
+      "terrain_cost": 67.246
+    },
+    {
+      "index": 98,
+      "start_scan_index": 98,
+      "end_scan_index": 99,
+      "search_mode": "margin_96",
+      "raw_point_count": 53,
+      "simplified_point_count": 6,
+      "world_length_yards": 240.882,
+      "terrain_cost": 74.077
+    },
+    {
+      "index": 99,
+      "start_scan_index": 99,
+      "end_scan_index": 100,
+      "search_mode": "margin_96",
+      "raw_point_count": 85,
+      "simplified_point_count": 8,
+      "world_length_yards": 395.388,
+      "terrain_cost": 109.984
+    },
+    {
+      "index": 100,
+      "start_scan_index": 100,
+      "end_scan_index": 101,
+      "search_mode": "margin_96",
+      "raw_point_count": 25,
+      "simplified_point_count": 3,
+      "world_length_yards": 115.81,
+      "terrain_cost": 32.81
+    },
+    {
+      "index": 101,
+      "start_scan_index": 101,
+      "end_scan_index": 102,
+      "search_mode": "margin_96",
+      "raw_point_count": 75,
+      "simplified_point_count": 8,
+      "world_length_yards": 325.212,
+      "terrain_cost": 104.742
+    },
+    {
+      "index": 102,
+      "start_scan_index": 102,
+      "end_scan_index": 103,
+      "search_mode": "margin_96",
+      "raw_point_count": 36,
+      "simplified_point_count": 4,
+      "world_length_yards": 156.223,
+      "terrain_cost": 55.276
+    },
+    {
+      "index": 103,
+      "start_scan_index": 103,
+      "end_scan_index": 104,
+      "search_mode": "margin_96",
+      "raw_point_count": 43,
+      "simplified_point_count": 5,
+      "world_length_yards": 214.918,
+      "terrain_cost": 57.804
+    },
+    {
+      "index": 104,
+      "start_scan_index": 104,
+      "end_scan_index": 105,
+      "search_mode": "margin_96",
+      "raw_point_count": 33,
+      "simplified_point_count": 4,
+      "world_length_yards": 135.124,
+      "terrain_cost": 36.563
+    },
+    {
+      "index": 105,
+      "start_scan_index": 105,
+      "end_scan_index": 106,
+      "search_mode": "margin_96",
+      "raw_point_count": 16,
+      "simplified_point_count": 3,
+      "world_length_yards": 72.507,
+      "terrain_cost": 20.445
+    },
+    {
+      "index": 106,
+      "start_scan_index": 106,
+      "end_scan_index": 107,
+      "search_mode": "margin_96",
+      "raw_point_count": 21,
+      "simplified_point_count": 3,
+      "world_length_yards": 93.935,
+      "terrain_cost": 26.138
+    },
+    {
+      "index": 107,
+      "start_scan_index": 107,
+      "end_scan_index": 108,
+      "search_mode": "margin_96",
+      "raw_point_count": 27,
+      "simplified_point_count": 4,
+      "world_length_yards": 133.053,
+      "terrain_cost": 35.962
+    },
+    {
+      "index": 108,
+      "start_scan_index": 108,
+      "end_scan_index": 109,
+      "search_mode": "margin_96",
+      "raw_point_count": 43,
+      "simplified_point_count": 5,
+      "world_length_yards": 200.345,
+      "terrain_cost": 55.081
+    },
+    {
+      "index": 109,
+      "start_scan_index": 109,
+      "end_scan_index": 110,
+      "search_mode": "margin_96",
+      "raw_point_count": 82,
+      "simplified_point_count": 7,
+      "world_length_yards": 353.83,
+      "terrain_cost": 91.481
+    },
+    {
+      "index": 110,
+      "start_scan_index": 110,
+      "end_scan_index": 111,
+      "search_mode": "margin_96",
+      "raw_point_count": 41,
+      "simplified_point_count": 5,
+      "world_length_yards": 171.913,
+      "terrain_cost": 48.306
+    },
+    {
+      "index": 111,
+      "start_scan_index": 111,
+      "end_scan_index": 112,
+      "search_mode": "margin_96",
+      "raw_point_count": 63,
+      "simplified_point_count": 5,
+      "world_length_yards": 259.025,
+      "terrain_cost": 66.51
+    },
+    {
+      "index": 112,
+      "start_scan_index": 112,
+      "end_scan_index": 113,
+      "search_mode": "margin_96",
+      "raw_point_count": 22,
+      "simplified_point_count": 3,
+      "world_length_yards": 117.999,
+      "terrain_cost": 32.483
+    },
+    {
+      "index": 113,
+      "start_scan_index": 113,
+      "end_scan_index": 114,
+      "search_mode": "margin_96",
+      "raw_point_count": 70,
+      "simplified_point_count": 6,
+      "world_length_yards": 289.684,
+      "terrain_cost": 76.867
+    },
+    {
+      "index": 114,
+      "start_scan_index": 114,
+      "end_scan_index": 115,
+      "search_mode": "margin_96",
+      "raw_point_count": 30,
+      "simplified_point_count": 5,
+      "world_length_yards": 138.814,
+      "terrain_cost": 38.932
+    },
+    {
+      "index": 115,
+      "start_scan_index": 115,
+      "end_scan_index": 116,
+      "search_mode": "margin_96",
+      "raw_point_count": 57,
+      "simplified_point_count": 5,
+      "world_length_yards": 252.54,
+      "terrain_cost": 65.598
+    },
+    {
+      "index": 116,
+      "start_scan_index": 116,
+      "end_scan_index": 117,
+      "search_mode": "margin_96",
+      "raw_point_count": 49,
+      "simplified_point_count": 5,
+      "world_length_yards": 219.359,
+      "terrain_cost": 61.07
+    },
+    {
+      "index": 117,
+      "start_scan_index": 117,
+      "end_scan_index": 118,
+      "search_mode": "margin_96",
+      "raw_point_count": 47,
+      "simplified_point_count": 6,
+      "world_length_yards": 221.389,
+      "terrain_cost": 61.057
+    },
+    {
+      "index": 118,
+      "start_scan_index": 118,
+      "end_scan_index": 119,
+      "search_mode": "margin_96",
+      "raw_point_count": 18,
+      "simplified_point_count": 4,
+      "world_length_yards": 80.334,
+      "terrain_cost": 24.119
+    },
+    {
+      "index": 119,
+      "start_scan_index": 119,
+      "end_scan_index": 120,
+      "search_mode": "margin_96",
+      "raw_point_count": 22,
+      "simplified_point_count": 4,
+      "world_length_yards": 99.702,
+      "terrain_cost": 30.894
+    },
+    {
+      "index": 120,
+      "start_scan_index": 120,
+      "end_scan_index": 121,
+      "search_mode": "margin_96",
+      "raw_point_count": 81,
+      "simplified_point_count": 9,
+      "world_length_yards": 373.313,
+      "terrain_cost": 102.738
+    },
+    {
+      "index": 121,
+      "start_scan_index": 121,
+      "end_scan_index": 122,
+      "search_mode": "margin_96",
+      "raw_point_count": 23,
+      "simplified_point_count": 5,
+      "world_length_yards": 113.982,
+      "terrain_cost": 32.172
+    },
+    {
+      "index": 122,
+      "start_scan_index": 122,
+      "end_scan_index": 123,
+      "search_mode": "margin_96",
+      "raw_point_count": 88,
+      "simplified_point_count": 8,
+      "world_length_yards": 407.243,
+      "terrain_cost": 107.933
+    },
+    {
+      "index": 123,
+      "start_scan_index": 123,
+      "end_scan_index": 124,
+      "search_mode": "margin_96",
+      "raw_point_count": 87,
+      "simplified_point_count": 7,
+      "world_length_yards": 369.598,
+      "terrain_cost": 100.364
+    },
+    {
+      "index": 124,
+      "start_scan_index": 124,
+      "end_scan_index": 125,
+      "search_mode": "margin_96",
+      "raw_point_count": 31,
+      "simplified_point_count": 4,
+      "world_length_yards": 156.37,
+      "terrain_cost": 42.495
+    },
+    {
+      "index": 125,
+      "start_scan_index": 125,
+      "end_scan_index": 126,
+      "search_mode": "margin_96",
+      "raw_point_count": 88,
+      "simplified_point_count": 7,
+      "world_length_yards": 383.422,
+      "terrain_cost": 127.551
+    },
+    {
+      "index": 126,
+      "start_scan_index": 126,
+      "end_scan_index": 127,
+      "search_mode": "margin_96",
+      "raw_point_count": 102,
+      "simplified_point_count": 9,
+      "world_length_yards": 464.338,
+      "terrain_cost": 129.008
+    },
+    {
+      "index": 127,
+      "start_scan_index": 127,
+      "end_scan_index": 128,
+      "search_mode": "margin_96",
+      "raw_point_count": 177,
+      "simplified_point_count": 15,
+      "world_length_yards": 835.293,
+      "terrain_cost": 224.694
+    },
+    {
+      "index": 128,
+      "start_scan_index": 128,
+      "end_scan_index": 129,
+      "search_mode": "margin_96",
+      "raw_point_count": 56,
+      "simplified_point_count": 6,
+      "world_length_yards": 246.465,
+      "terrain_cost": 66.092
+    },
+    {
+      "index": 129,
+      "start_scan_index": 129,
+      "end_scan_index": 0,
+      "search_mode": "margin_96",
+      "raw_point_count": 93,
+      "simplified_point_count": 8,
+      "world_length_yards": 402.73,
+      "terrain_cost": 107.282
+    }
+  ],
+  "source_paths": {
+    "nodes": "data/routes/source/tanaris_gathermate_nodes.json",
+    "trajectory": "data/human_demo_tanaris_20260802_114252/analysis/trajectory.jsonl",
+    "manifest": "data/extracted_client_data/tanaris_corrected/manifest.json",
+    "adt_dir": "data/extracted_client_data/tanaris_corrected/world/maps/Kalimdor"
+  },
+  "limitations": [
+    "ADT height/slope routing does not yet model doodads, fences, buildings, or liquid.",
+    "GatherMate records do not identify underground nodes; dark live minimap icons remain ignored.",
+    "The extended portions outside the human recording require live validation."
+  ]
+}

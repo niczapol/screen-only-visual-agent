@@ -1,0 +1,37 @@
+{
+  "map_id": 1,
+  "anchor_ui": [
+    38.36,
+    59.71
+  ],
+  "anchor_polygon_id": 120104,
+  "anchor_component_id": 4407,
+  "anchor_component_polygons": 891,
+  "loaded_ground_polygons": 256553,
+  "accepted_node_count": 1,
+  "rejected_node_count": 163,
+  "route_waypoint_count": 48,
+  "route_world_length": 660.3997,
+  "segments": [
+    {
+      "index": 0,
+      "target_node_id": 38,
+      "corridor_polygons": 44,
+      "funnel_points": 16,
+      "world_length": 330.1998,
+      "graph_cost": 404.5727
+    }
+  ],
+  "return_segment": {
+    "corridor_polygons": 44,
+    "funnel_points": 17,
+    "world_length": 330.1998,
+    "graph_cost": 404.5727
+  },
+  "source_paths": {
+    "input_route": "data\\routes\\generated\\desolace_mining_spacing_3_0.json",
+    "manifest": "data\\extracted_client_data\\desolace_v2\\manifest.json",
+    "adt_dir": "data\\extracted_client_data\\desolace_v2\\world\\maps\\Kalimdor",
+    "mmap_dir": "data\\server_navigation\\ac_data_v20\\mmaps"
+  }
+}

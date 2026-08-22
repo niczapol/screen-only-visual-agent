@@ -1,0 +1,29 @@
+{
+  "map_id": 1,
+  "status": "rejected_no_patrol_corridor",
+  "anchor_ui": [
+    40.94,
+    58.02
+  ],
+  "anchor_polygon_id": 111641,
+  "anchor_component_id": 4407,
+  "anchor_component_polygons": 891,
+  "terrain_safe_reachable_polygons": 1,
+  "target_polygon_id": null,
+  "one_way_world_length": 0.0,
+  "route_world_length": 0,
+  "route_waypoint_count": 0,
+  "corridor_polygons": 0,
+  "terrain_validation": null,
+  "terrain_cost_config": {
+    "soft_slope_degrees": 12.0,
+    "hard_slope_degrees": 32.0,
+    "slope_weight": 12.0,
+    "roughness_weight": 0.12,
+    "clearance_cells": 5.0,
+    "clearance_weight": 9.0
+  },
+  "min_clearance": 1.0,
+  "max_patrol_cost": 380.0,
+  "min_patrol_length": 80.0
+}

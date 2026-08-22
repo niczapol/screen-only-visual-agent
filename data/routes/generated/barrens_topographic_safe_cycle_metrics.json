@@ -1,0 +1,203 @@
+{
+  "cost_config": {
+    "soft_slope_degrees": 15.0,
+    "hard_slope_degrees": 35.0,
+    "slope_weight": 8.0,
+    "roughness_weight": 0.08,
+    "clearance_cells": 3.0,
+    "clearance_weight": 5.0
+  },
+  "primary_component_area_cells": 102698,
+  "accepted_node_count": 11,
+  "terrain_rejected_node_count": 10,
+  "segment_count": 11,
+  "raw_point_count": 1851,
+  "route_waypoint_count": 135,
+  "route_crossed_cell_count": 2650,
+  "straight_world_length": 7127.8912,
+  "path_world_length": 8352.8748,
+  "detour_ratio": 1.171858,
+  "max_route_slope_degrees": 34.9653,
+  "mean_route_slope_degrees": 6.889,
+  "min_route_clearance_cells": 1.3693,
+  "source_paths": {
+    "input_route": "data\\routes\\generated\\barrens_central_east_mining_safe_cycle.json",
+    "manifest": "data\\extracted_client_data\\barrens_v2\\manifest.json",
+    "adt_dir": "data\\extracted_client_data\\barrens_v2\\world\\maps\\Kalimdor"
+  },
+  "route_bounds": {
+    "min_x": 50.0,
+    "max_x": 65.0,
+    "min_y": 30.0,
+    "max_y": 68.0
+  },
+  "route_bound_margin": 1.0,
+  "ordering": {
+    "enabled": true,
+    "method": "terrain_pairwise_nearest_neighbor_2opt",
+    "max_two_opt_iterations": 80,
+    "source_cycle_cost": 2443.1526,
+    "optimized_cycle_cost": 2350.8169,
+    "improvement_ratio": 1.039278,
+    "source_route_orders": [
+      0,
+      1,
+      2,
+      4,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      20
+    ],
+    "optimized_source_route_orders": [
+      0,
+      1,
+      14,
+      11,
+      10,
+      9,
+      12,
+      13,
+      4,
+      2,
+      20
+    ]
+  },
+  "segments": [
+    {
+      "index": 0,
+      "start_node_index": 0,
+      "end_node_index": 1,
+      "search_mode": "margin_96",
+      "raw_point_count": 50,
+      "simplified_point_count": 5,
+      "astar_total_cost": 64.4269,
+      "straight_world_length": 233.11,
+      "raw_world_length": 250.7657,
+      "simplified_world_length": 239.5095
+    },
+    {
+      "index": 1,
+      "start_node_index": 1,
+      "end_node_index": 2,
+      "search_mode": "margin_96",
+      "raw_point_count": 528,
+      "simplified_point_count": 38,
+      "astar_total_cost": 633.925,
+      "straight_world_length": 1833.9866,
+      "raw_world_length": 2452.9909,
+      "simplified_world_length": 2360.4231
+    },
+    {
+      "index": 2,
+      "start_node_index": 2,
+      "end_node_index": 3,
+      "search_mode": "margin_96",
+      "raw_point_count": 164,
+      "simplified_point_count": 13,
+      "astar_total_cost": 209.6706,
+      "straight_world_length": 690.5739,
+      "raw_world_length": 786.1718,
+      "simplified_world_length": 750.602
+    },
+    {
+      "index": 3,
+      "start_node_index": 3,
+      "end_node_index": 4,
+      "search_mode": "margin_96",
+      "raw_point_count": 145,
+      "simplified_point_count": 11,
+      "astar_total_cost": 187.5352,
+      "straight_world_length": 605.7594,
+      "raw_world_length": 662.132,
+      "simplified_world_length": 633.2389
+    },
+    {
+      "index": 4,
+      "start_node_index": 4,
+      "end_node_index": 5,
+      "search_mode": "margin_96",
+      "raw_point_count": 33,
+      "simplified_point_count": 4,
+      "astar_total_cost": 41.3963,
+      "straight_world_length": 133.3984,
+      "raw_world_length": 141.9628,
+      "simplified_world_length": 135.6123
+    },
+    {
+      "index": 5,
+      "start_node_index": 5,
+      "end_node_index": 6,
+      "search_mode": "margin_96",
+      "raw_point_count": 176,
+      "simplified_point_count": 15,
+      "astar_total_cost": 237.9467,
+      "straight_world_length": 688.9253,
+      "raw_world_length": 862.0602,
+      "simplified_world_length": 804.0644
+    },
+    {
+      "index": 6,
+      "start_node_index": 6,
+      "end_node_index": 7,
+      "search_mode": "margin_96",
+      "raw_point_count": 79,
+      "simplified_point_count": 7,
+      "astar_total_cost": 132.6509,
+      "straight_world_length": 152.5819,
+      "raw_world_length": 375.0508,
+      "simplified_world_length": 348.7667
+    },
+    {
+      "index": 7,
+      "start_node_index": 7,
+      "end_node_index": 8,
+      "search_mode": "margin_96",
+      "raw_point_count": 254,
+      "simplified_point_count": 19,
+      "astar_total_cost": 294.4717,
+      "straight_world_length": 1031.7949,
+      "raw_world_length": 1161.1718,
+      "simplified_world_length": 1114.1334
+    },
+    {
+      "index": 8,
+      "start_node_index": 8,
+      "end_node_index": 9,
+      "search_mode": "margin_96",
+      "raw_point_count": 312,
+      "simplified_point_count": 24,
+      "astar_total_cost": 406.6612,
+      "straight_world_length": 1279.6552,
+      "raw_world_length": 1547.8133,
+      "simplified_world_length": 1478.4227
+    },
+    {
+      "index": 9,
+      "start_node_index": 9,
+      "end_node_index": 10,
+      "search_mode": "margin_96",
+      "raw_point_count": 59,
+      "simplified_point_count": 5,
+      "astar_total_cost": 70.2921,
+      "straight_world_length": 242.9563,
+      "raw_world_length": 252.022,
+      "simplified_world_length": 246.7981
+    },
+    {
+      "index": 10,
+      "start_node_index": 10,
+      "end_node_index": 0,
+      "search_mode": "margin_96",
+      "raw_point_count": 51,
+      "simplified_point_count": 5,
+      "astar_total_cost": 71.8404,
+      "straight_world_length": 235.1492,
+      "raw_world_length": 254.9324,
+      "simplified_world_length": 241.3035
+    }
+  ]
+}
