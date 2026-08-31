@@ -21,6 +21,18 @@ DEFAULT_REMOVE_START = 55
 DEFAULT_REMOVE_END = 269
 
 
+def canonical_json_sha256(value: Any) -> str:
+    """Hash JSON content independently of checkout line-ending policy."""
+
+    payload = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -269,8 +281,7 @@ def _audit_route(planner: NavMeshRouteEntryPlanner, coords: Sequence[int]) -> di
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
-    source_bytes = args.source.read_bytes()
-    source = json.loads(source_bytes.decode("utf-8"))
+    source = json.loads(args.source.read_text(encoding="utf-8"))
     planner = NavMeshRouteEntryPlanner.from_config(load_config(args.config), zone_id=162)
     bridge, validation = generate_safe_bridge(planner, source)
     result = build_v19(
@@ -278,7 +289,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         planner=planner,
         bridge_coords=bridge,
         bridge_validation=validation,
-        source_fingerprint=hashlib.sha256(source_bytes).hexdigest(),
+        source_fingerprint=canonical_json_sha256(source),
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(

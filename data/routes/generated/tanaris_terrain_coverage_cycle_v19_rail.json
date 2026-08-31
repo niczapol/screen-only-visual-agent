@@ -6,7 +6,7 @@
   "status": "offline_compiled_candidate_not_live_validated",
   "source": {
     "route": "Tanaris terrain-aware full rail cycle v18 narrow Caverns gorge veto",
-    "source_sha256": "a52bb668f38f7ba5b5bf97ff247be63d88c7dc9322d1ca413424dcb299ba1b31",
+    "source_sha256": "84bfb4eaef1bb88a58bb22b81eaaa097f7800cdb8d6d5bb7eb47c71fff2cfa5a",
     "compiler": "scripts/build_tanaris_rail_route_v19.py",
     "removed_v18_indexes": [
       55,

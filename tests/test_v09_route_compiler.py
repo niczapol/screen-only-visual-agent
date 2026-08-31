@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-import hashlib
 import json
 from pathlib import Path
 
@@ -12,6 +11,7 @@ from vision_bot.core.geometry import MapPoint
 from vision_bot.core.hazards import PhysicalHazardGuard
 from vision_bot.engine.route_compiler import compile_configured_route
 from vision_bot.v09_config import V09Config
+from scripts.build_tanaris_rail_route_v19 import canonical_json_sha256
 
 
 ROOT = Path(__file__).parents[1]
@@ -26,7 +26,8 @@ def test_v19_provenance_matches_exact_v18_source_and_has_no_hazard_hits() -> Non
     compiled_path = ROOT / "data/routes/generated/tanaris_terrain_coverage_cycle_v19_rail.json"
     data = json.loads(compiled_path.read_text(encoding="utf-8"))
 
-    assert data["source"]["source_sha256"] == hashlib.sha256(source_path.read_bytes()).hexdigest()
+    source = json.loads(source_path.read_text(encoding="utf-8"))
+    assert data["source"]["source_sha256"] == canonical_json_sha256(source)
     assert data["route_override"]["all_hazard_audit"] == {
         "hazard_point_indexes": [],
         "hazard_segment_indexes": [],
