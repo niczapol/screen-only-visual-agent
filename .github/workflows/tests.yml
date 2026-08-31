@@ -22,5 +22,4 @@ jobs:
       - name: Compile
         run: python -m compileall -q src scripts examples
       - name: Test
-        run: pytest -q
-
+        run: python -m pytest -q
