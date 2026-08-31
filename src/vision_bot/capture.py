@@ -133,6 +133,10 @@ class ScreenCapture:
         monitor = self._resolve_monitor_region()
         return int(monitor.get("left", 0)) + int(x), int(monitor.get("top", 0)) + int(y)
 
+    def screen_to_client_point(self, x: int, y: int) -> tuple[int, int]:
+        monitor = self._resolve_monitor_region()
+        return int(x) - int(monitor.get("left", 0)), int(y) - int(monitor.get("top", 0))
+
     def activate_window(self) -> bool:
         if self.window_handle is None:
             return False

@@ -4,28 +4,37 @@
 
 ```mermaid
 flowchart TD
-    Capture[Window-scoped MSS capture] --> Sensors
-    Addon[Visible Lua telemetry strips] --> Sensors
-    Sensors[CV, OCR and marker sensors] --> Observation[Timestamped observation]
-    Observation --> State[Temporal evidence and state estimator]
-    State --> Arbitration{Input ownership}
-    Arbitration -->|death/modal| Recovery[Recovery controller]
-    Arbitration -->|combat| Combat[Combat controller]
-    Arbitration -->|interaction| Mining[Interaction controller]
-    Arbitration -->|travel| Route[Route and movement controller]
-    Recovery --> Command[Explicit command]
-    Combat --> Command
-    Mining --> Command
-    Route --> Command
-    Command --> Adapters[Win32 input adapters]
-    State --> Telemetry[JSONL telemetry and event buffer]
-    Telemetry --> Replay[Offline replay]
-    Replay --> State
+    Capture[Window-scoped MSS capture] --> Snapshot
+    Addon[Visible protocol v2 telemetry] --> Snapshot
+    Sensors[CV, OCR and bounded sensors] --> Snapshot
+    Snapshot[Immutable WorldSnapshot] --> Supervisor{Pure priority supervisor}
+    Supervisor -->|recovery| Recovery[Recovery controller]
+    Supervisor -->|combat| Combat[Combat controller]
+    Supervisor -->|loot| Loot[Loot controller]
+    Supervisor -->|mining| Mining[Mining controller]
+    Supervisor -->|mount| Mount[Mount controller]
+    Supervisor -->|travel| Route[Travel controller]
+    Recovery --> Intent[ControlIntent]
+    Combat --> Intent
+    Loot --> Intent
+    Mining --> Intent
+    Mount --> Intent
+    Route --> Intent
+    Intent --> Executor[Single InputExecutor]
+    Executor --> Adapters[Win32 adapters in live mode]
+    Snapshot --> Telemetry[Replay-compatible JSONL]
+    Telemetry --> Replay[Deterministic replay]
+    Replay --> Supervisor
 ```
 
-Capture and input are adapters. State transition logic receives observations
-and returns commands, which makes the behavior testable without controlling a
-real window.
+Capture and input remain adapters. The supervisor and domain controllers are
+pure state transitions over immutable evidence. They cannot capture a frame,
+sleep or press a key, so the same kernel runs in tests, replay, shadow and live
+modes.
+
+The executor is the only side-effect owner. It serializes scheduled commands,
+tracks held keys/buttons, rejects stale generations and immediately reconciles
+input on preemption. Shadow mode never constructs it.
 
 ## Perception
 
@@ -38,15 +47,23 @@ types:
 - player state and game events: fixed visible addon markers;
 - state changes: temporal evidence across multiple observations.
 
-Every sensor result is expected to carry presence state, confidence, age and
-source. `unknown` is distinct from `absent`.
+Every sensor result carries presence state, confidence, observation time,
+frame and source. `unknown` is distinct from `absent`; stale protocol withdraws
+route/mining authority instead of inventing negative evidence.
+
+The visible Lua strip uses protocol v2: version, rolling frame sequence,
+coordinates, heading, event sequence, status flags and checksum. That makes a
+frozen but visually valid overlay detectable from pixels alone.
 
 ## Navigation
 
-Global route geometry is precomputed from external offline references. Runtime
-localization still comes from visible screen coordinates. The directed route
-follower projects observations onto a cyclic polyline, unwraps progress across
-the lap boundary and rejects implausible regression or forward jumps.
+Global route geometry is precomputed from external offline references and
+compiled into physical yards. Runtime localization still comes from visible
+screen coordinates. The compiler rejects hazardous points, segments, mining
+nodes and access options and applies permanent exclusions before controller
+construction. The directed follower projects observations onto a cyclic
+polyline, unwraps progress across the lap boundary and rejects implausible
+regression or forward jumps.
 
 Normal movement holds forward continuously. Heading corrections use bounded
 right-mouse drags proportional to visible heading error. Local recovery starts
@@ -67,9 +84,9 @@ visible state machine rather than a blind click sequence.
 
 ## Observability and replay
 
-Each controller tick records relevant observation summaries, active state,
-selected owner, command, reason and timing. Expensive visual artifacts are
-stored only around important events. Analysis scripts reconstruct route
-progress, cross-track error, interaction attempts, combat schedules and state
-transitions without repeating a live run.
-
+Each controller tick records the snapshot summary, selected owner, intent,
+reason, state transition and timing. Replay feeds recorded snapshots back into
+the production kernel and checks deterministic digests plus safety invariants.
+Expensive visual artifacts are stored only around important events. Analysis
+scripts reconstruct route progress, cross-track error, interaction attempts,
+combat schedules and state transitions without repeating a live run.

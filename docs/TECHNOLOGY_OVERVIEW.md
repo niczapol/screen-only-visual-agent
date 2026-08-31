@@ -47,19 +47,29 @@ Detour-compatible navmesh and terrain references to build route entry paths and
 hazard-aware cycles. Those heavy third-party inputs are deliberately external
 to this repository.
 
-## State machines and arbitration
+## Immutable evidence, supervisor and controllers
 
 Temporal state machines convert incomplete visual evidence into bounded
-behavior. An ownership layer selects one subsystem per tick so movement,
-combat, interaction and modal recovery cannot issue contradictory input. This
-is conceptually similar to robotics behavior arbitration and industrial RPA,
-where partial observability and safe recovery matter more than one perfect
+behavior. V0.9 builds one immutable `WorldSnapshot`, then a pure priority
+supervisor selects exactly one domain controller per tick. Controllers return
+explicit command schedules; they do not capture frames, sleep or touch the OS.
+This is conceptually similar to robotics behavior arbitration and industrial
+RPA, where partial observability and safe recovery matter more than one perfect
 frame classification.
+
+## Serialized input execution
+
+One nonblocking `InputExecutor` owns all side effects. It reconciles held
+keys/buttons, enforces action windows and minimum gaps, and cancels stale
+command generations when a higher-priority domain preempts the current one.
+The live adapter pumps that one schedule between slower perception frames;
+shadow and replay modes never create an OS input backend.
 
 ## Pytest and replay testing
 
-Pytest covers pure geometry, perception helpers, controller transitions,
-priority collisions, time-based scheduling and recovered live regressions.
+Pytest covers pure geometry, immutable evidence, supervisor priorities,
+controller transitions, executor scheduling, deterministic replay invariants
+and recovered live regressions.
 Heavy external models are replaced by deterministic fakes for controller tests.
 Saved media is omitted from this snapshot, so external replay tests skip when a
 licensed fixture is not available.
@@ -77,4 +87,3 @@ Setuptools provides the installable `src`-layout package. PyInstaller can build
 a Windows executable for a controlled local setup. GitHub Actions installs the
 project on a clean Windows runner, compiles the source and executes the offline
 test suite on every push and pull request.
-

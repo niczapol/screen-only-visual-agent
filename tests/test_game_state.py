@@ -79,7 +79,7 @@ def test_detect_game_state_alive_health_bar_vetoes_sandy_ghost_palette():
 
     state = detect_game_state(frame)
 
-    assert state.ghost_visual
+    assert not state.ghost_visual
     assert state.alive_health_bar
     assert not state.death_or_blocking_modal
 
@@ -138,12 +138,13 @@ def test_detect_game_state_alive_health_bar_vetoes_false_ghost_buttons():
 
     with (
         patch("vision_bot.game_state._detect_alive_player_health_bar", return_value=True),
-        patch("vision_bot.game_state._count_ghost_action_buttons", return_value=2),
+        patch("vision_bot.game_state._count_ghost_action_buttons", return_value=2) as buttons,
     ):
         state = detect_game_state(frame)
 
     assert state.alive_health_bar
-    assert state.ghost_button_count == 2
+    assert state.ghost_button_count == 0
+    buttons.assert_not_called()
     assert not state.death_or_blocking_modal
 
 

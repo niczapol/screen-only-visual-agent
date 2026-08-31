@@ -258,7 +258,7 @@ class DeathRecoveryController:
 
         ghost_action_buttons_visible = int(getattr(game_state, "ghost_button_count", 0)) >= 2
 
-        # The target client corpse screen uses a yellow "Return to Graveyard" action
+        # The target client's corpse screen uses a yellow "Return to Graveyard" action
         # instead of the red release button used by the stock client. Prefer
         # that explicit left-side action before looking for generic red UI;
         # the latter can otherwise match the Death Recap window below it.

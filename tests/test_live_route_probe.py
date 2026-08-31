@@ -1186,7 +1186,7 @@ def test_config_uses_tanaris_full_rail_cycle():
 
     assert route["locations"] == [162]
     assert route["database_path"] == (
-        "data/routes/generated/tanaris_terrain_coverage_cycle_v18_rail.json"
+        "data/routes/generated/tanaris_terrain_coverage_cycle_v19_rail.json"
     )
     assert route["follow_route_loop"] is True
     assert route["reached_distance"] == 0.65
@@ -1332,12 +1332,12 @@ def test_tanaris_full_rail_cycle_exposes_runtime_loop_and_filtered_nodes():
 
     route_loop = _load_configured_route_loop(config)
 
-    assert len(route_loop) == 488
+    assert len(route_loop) == 304
     assert route_loop[0] != route_loop[-1]
     assert _load_configured_route_entry(config) is None
 
     milestones = _load_configured_route_milestones(config)
-    assert len(milestones) == 131
+    assert len(milestones) == 74
     assert {node.coord for node in milestones}.isdisjoint(
         {4450228000, 3770210000, 3630201000, 3621201200}
     )

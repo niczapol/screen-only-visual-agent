@@ -7,6 +7,8 @@ copyrighted media or tens of gigabytes of generated artifacts.
 ## Included
 
 - original Python controller, perception and analysis code;
+- the v0.9 immutable snapshot, pure supervisor, domain controllers, serialized
+  executor, replay kernel, CLI and preflight code;
 - original Lua telemetry addon under a neutral project name;
 - unit and replay-oriented test code;
 - generated JSON/CSV route outputs required by tests;
@@ -29,4 +31,3 @@ The committed offline route example and tests are reproducible from this
 repository. The complete local live research environment is intentionally not
 reproducible from the portfolio snapshot alone because its external assets may
 have separate licenses and may contain private operational data.
-

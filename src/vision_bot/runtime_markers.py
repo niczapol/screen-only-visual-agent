@@ -15,6 +15,21 @@ class RuntimeTelemetry:
     x: float
     y: float
     heading_degrees: float
+    protocol_version: int = 1
+    frame_sequence: int | None = None
+    event_sequence: int | None = None
+    status_bits: int = 0
+    checksum_valid: bool = True
+
+
+RUNTIME_STATUS_COMBAT = 1 << 0
+RUNTIME_STATUS_OUTGOING_HIT = 1 << 1
+RUNTIME_STATUS_WRONG_FACING = 1 << 2
+RUNTIME_STATUS_OUT_OF_RANGE = 1 << 3
+RUNTIME_STATUS_TARGET_IS_ATTACKER = 1 << 4
+RUNTIME_STATUS_LOOT_OPENED = 1 << 5
+RUNTIME_STATUS_LOOT_PENDING = 1 << 6
+RUNTIME_STATUS_MOUNTED = 1 << 7
 
 
 @dataclass(frozen=True)
@@ -61,7 +76,7 @@ def read_runtime_telemetry(
         return None
 
     region_cfg = telemetry_cfg.get(
-        "region", {"x": 1120, "y": 45, "width": 320, "height": 50}
+        "region", {"x": 700, "y": 45, "width": 1160, "height": 50}
     )
     x, y, width, height = resolve_region(region_cfg, frame.shape, cfg)
     roi = frame[y : y + height, x : x + width]
@@ -72,23 +87,56 @@ def read_runtime_telemetry(
     right = _sentinel_center(roi, "cyan")
     if left is None or right is None or right[0] <= left[0]:
         return None
-    scale = (right[0] - left[0]) / 166.0
+    scale = (right[0] - left[0]) / 302.0
     if not 0.5 <= scale <= 3.0 or abs(right[1] - left[1]) > max(3.0, scale * 3.0):
         return None
 
     row = int(round((left[1] + right[1]) * 0.5))
     threshold = int(telemetry_cfg.get("bit_threshold", 150))
     values: list[int] = []
-    for index in range(37):
+    for index in range(72):
         column = int(round(left[0] + (9.0 + index * 4.0) * scale))
-        channel = 2 if index < 14 else 1 if index < 28 else 0
+        if index < 3:
+            channel = 2
+        elif index < 11:
+            channel = 2
+        elif index < 25:
+            channel = 2
+        elif index < 39:
+            channel = 1
+        elif index < 48:
+            channel = 0
+        elif index < 56:
+            channel = 2
+        elif index < 64:
+            channel = 1
+        else:
+            channel = 2
         values.append(
             int(_sample_channel(roi, column, row, channel) >= threshold)
         )
-
-    x_value = _decode_bits(values[:14])
-    y_value = _decode_bits(values[14:28])
-    heading_value = _decode_bits(values[28:])
+    protocol_version = _decode_bits(values[:3])
+    frame_sequence = _decode_bits(values[3:11])
+    x_value = _decode_bits(values[11:25])
+    y_value = _decode_bits(values[25:39])
+    heading_value = _decode_bits(values[39:48])
+    event_sequence = _decode_bits(values[48:56])
+    status_bits = _decode_bits(values[56:64])
+    checksum = _decode_bits(values[64:72])
+    expected_version = int(cfg.get("v09", {}).get("protocol_version", 2))
+    if protocol_version != expected_version:
+        return None
+    expected_checksum = _runtime_telemetry_checksum(
+        protocol_version,
+        frame_sequence,
+        x_value,
+        y_value,
+        heading_value,
+        event_sequence,
+        status_bits,
+    )
+    if checksum != expected_checksum:
+        return None
     if not (0 <= x_value <= 10000 and 0 <= y_value <= 10000):
         return None
     if x_value == 0 and y_value == 0:
@@ -102,7 +150,35 @@ def read_runtime_telemetry(
         x=x_percent,
         y=y_percent,
         heading_degrees=(heading_value / 511.0) * 360.0,
+        protocol_version=protocol_version,
+        frame_sequence=frame_sequence,
+        event_sequence=event_sequence,
+        status_bits=status_bits,
+        checksum_valid=True,
     )
+
+
+def _runtime_telemetry_checksum(
+    protocol_version: int,
+    frame_sequence: int,
+    x_value: int,
+    y_value: int,
+    heading_value: int,
+    event_sequence: int,
+    status_bits: int,
+) -> int:
+    return (
+        protocol_version
+        + frame_sequence
+        + event_sequence
+        + status_bits
+        + x_value % 256
+        + (x_value // 256) % 256
+        + y_value % 256
+        + (y_value // 256) % 256
+        + heading_value % 256
+        + (heading_value // 256) % 256
+    ) % 256
 
 
 def read_minimap_ore_tooltip_telemetry(

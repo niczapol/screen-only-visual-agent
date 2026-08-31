@@ -591,8 +591,22 @@ def detect_combat_state(frame: np.ndarray, config: dict[str, Any] | None = None)
     cfg = config or {}
     combat_cfg = _combat_cfg(cfg)
     player_health_fraction = detect_player_health_fraction(frame, cfg)
-    raw_outgoing_damage_bbox = detect_outgoing_damage_numbers(frame, cfg)
-    legacy_facing_error_visible = detect_combat_facing_error_text(frame, cfg)
+    legacy_damage_enabled = bool(
+        combat_cfg.get("legacy_outgoing_damage_confirmation_enabled", True)
+    )
+    legacy_facing_enabled = bool(
+        combat_cfg.get("legacy_facing_error_confirmation_enabled", True)
+    )
+    raw_outgoing_damage_bbox = (
+        detect_outgoing_damage_numbers(frame, cfg)
+        if legacy_damage_enabled
+        else None
+    )
+    legacy_facing_error_visible = (
+        detect_combat_facing_error_text(frame, cfg)
+        if legacy_facing_enabled
+        else False
+    )
     combat_marker_visible = detect_combat_marker(frame, cfg)
     outgoing_hit_marker_visible = detect_outgoing_hit_marker(frame, cfg)
     facing_error_marker_visible = detect_facing_error_marker(frame, cfg)
@@ -601,7 +615,7 @@ def detect_combat_state(frame: np.ndarray, config: dict[str, Any] | None = None)
     attacker_count = detect_attacker_count_marker(frame, cfg)
     facing_error_visible = facing_error_marker_visible or (
         legacy_facing_error_visible
-        and bool(combat_cfg.get("legacy_facing_error_confirmation_enabled", True))
+        and legacy_facing_enabled
     )
     if not bool(combat_cfg.get("enabled", True)):
         return CombatState(
@@ -612,7 +626,16 @@ def detect_combat_state(frame: np.ndarray, config: dict[str, Any] | None = None)
     avoid_cfg = _avoidance_cfg(cfg)
     target_hint = _detect_hostile_target_frame(frame, cfg, avoid_cfg, "D")
     confirmed_target_bbox = _detect_confirmed_target_frame(frame, cfg, combat_cfg)
-    nameplate = _detect_central_red_nameplate(frame, cfg, avoid_cfg)
+    needs_nameplate = bool(
+        combat_cfg.get("engage_on_nameplate", False)
+        or combat_cfg.get("nameplate_facing_enabled", False)
+        or legacy_damage_enabled
+    )
+    nameplate = (
+        _detect_central_red_nameplate(frame, cfg, avoid_cfg)
+        if needs_nameplate
+        else None
+    )
     if (
         not combat_marker_visible
         and confirmed_target_bbox is None
@@ -643,7 +666,7 @@ def detect_combat_state(frame: np.ndarray, config: dict[str, Any] | None = None)
     )
     outgoing_damage_visible = outgoing_hit_marker_visible or (
         legacy_outgoing_damage_bbox is not None
-        and bool(combat_cfg.get("legacy_outgoing_damage_confirmation_enabled", True))
+        and legacy_damage_enabled
     )
     target_present = confirmed_target_bbox is not None
     active = (

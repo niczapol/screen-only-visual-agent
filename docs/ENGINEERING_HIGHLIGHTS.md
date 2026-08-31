@@ -6,15 +6,16 @@ source project's retained test and run reports.
 
 ## Verified implementation evidence
 
-- Latest offline suite: 778 passed, 22 skipped.
-- Sanitized portfolio suite: 765 passed, 35 explicitly skipped because the
+- Final archived source-project suite: 898 passed, 22 skipped.
+- Sanitized v0.9.2 portfolio suite: 885 passed, 35 explicitly skipped because the
   corresponding private media or external navigation inputs are omitted.
-- Static source inventory at export: 61 runtime Python modules, 54 Python tools
-  and 81 test modules.
-- Active route artifact: 488 waypoints, 130 effective mining candidates and 90
-  safe access plans after exclusions.
-- Exact hazard audit: zero active route points, route segments, nodes or access
-  options inside the configured gorge veto.
+- Static source inventory at export: 97 runtime Python modules, 55 Python tools
+  and 103 test modules.
+- V19 route artifact: 304 stored route entries, 303 normalized physical points,
+  74 planned nodes and 73 effective candidates after permanent exclusions.
+- Exact all-hazard audit: zero V19 route points, closing segments, nodes or
+  access options inside configured hazards. V19 remains an offline candidate,
+  not a production-acceptance claim.
 - Best long directional window: 47.206% projected coverage with zero accepted
   progress regression or off-corridor observations.
 - One fully verified autonomous interaction transaction: one authorized click,
@@ -39,6 +40,10 @@ source project's retained test and run reports.
 - Repeated interaction against the same failed physical target after coordinate
   projection jitter.
 - Runtime model dependency drift between preflight and the direct runner.
+- Stale queued mouse drags and a control-loop starvation failure, replaced by a
+  latest-observation yaw lane and a single 12 ms actuator pump.
+- Valid commands expiring during perception, fixed by rebasing relative action
+  windows at executor submission while preserving their internal order.
 - Unbounded storage growth from screenshots and video, replaced with event
   buffers, manifests and reviewed compaction.
 

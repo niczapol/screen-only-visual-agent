@@ -2,7 +2,7 @@
 ## Title: Screen Vision Telemetry
 ## Notes: Fixed visible markers and zonal coordinates for screen-only runtime perception.
 ## Author: Local project
-## Version: 0.4.5
+## Version: 0.5.1
 ## DefaultState: enabled
 ## OptionalDeps: TomTom
 

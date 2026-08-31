@@ -2,7 +2,11 @@
 
 The committed configuration is intentionally fail-closed:
 
-- live keyboard and mouse output is disabled;
+- v0.9 defaults to deterministic `replay` mode;
+- live keyboard and mouse output is denied by
+  `portfolio.allow_live_input: false`;
+- the live CLI independently requires an explicit enable flag and a fresh,
+  fingerprint-matching preflight manifest;
 - live route, mining, combat and recovery modes are disabled;
 - machine-specific paths and credentials belong in ignored local files;
 - model weights and external navigation data must be supplied separately.
@@ -17,4 +21,3 @@ the controller against software or services without authorization.
 
 Please report security issues privately to the repository owner rather than
 opening a public issue.
-

@@ -6,32 +6,41 @@ maintains temporal state, plans bounded actions, and verifies visible
 postconditions. It does not rely on process-memory reading, code injection,
 packet inspection or hidden server state.
 
-This repository is a privacy-safe portfolio snapshot of a longer research and
-engineering project. Raw gameplay media, client-derived assets, model weights,
-navigation extracts, account data and machine-specific configuration are not
-included. The committed configuration is offline and input-disabled by
-default.
+This repository is a privacy-safe v0.9.2 portfolio snapshot of a longer
+research and engineering project. Raw gameplay media, client-derived assets,
+model weights, navigation extracts, account data and machine-specific
+configuration are not included. The committed configuration defaults to
+deterministic replay and has a separate deny-by-default portfolio input gate.
 
 ## Engineering highlights
 
-- A timestamped perception-to-action pipeline with explicit unknown states.
+- One immutable, timestamped `WorldSnapshot` per frame with explicit unknown
+  and freshness semantics.
+- A pure priority supervisor that selects exactly one domain owner per tick.
+- Domain controllers that return explicit `ControlIntent` command schedules.
+- One generation-aware, nonblocking input executor that cancels stale work and
+  reconciles held keys/buttons.
+- Replay, shadow and explicitly gated live modes through one CLI and kernel.
+- A checksummed visible telemetry protocol with rolling frame/event sequences.
 - Deterministic route progress tracking that rejects backward jitter and
   physically close but logically incorrect loop segments.
 - Continuous forward motion with bounded, proportional right-mouse yaw.
-- Arbitration that permits one input owner per controller tick.
 - Evidence-gated interaction: ML detections propose candidates, while visible
   cursor, tooltip and state-transition evidence authorizes actions.
 - Serialized combat scheduling with priority and minimum key gaps.
 - Bounded obstacle, death and modal-dialog recovery state machines.
-- Event telemetry, replay analysis, dataset tooling and more than 770 offline
-  regression tests in the source project.
+- Event telemetry, replay analysis, dataset tooling and more than 880 automated
+  tests in this public snapshot.
 
-The sanitized portfolio snapshot currently passes 765 tests; 35 tests are
+The sanitized portfolio snapshot currently passes 885 tests; 35 tests are
 explicitly skipped because their private screenshots, cursor artwork or
 external navigation inputs are deliberately not redistributed.
 
-The latest retained route artifact contains 488 waypoints and a hazard-audited
-cyclic plan. Recorded development evidence includes one fully verified
+The latest V19 artifact stores 304 route entries (303 normalized physical
+points), 74 planned nodes and 73 effective candidates after permanent
+exclusions. Its all-hazard compile is clean, but it remains explicitly marked
+as an offline candidate rather than a production-accepted route. Recorded
+development evidence includes one fully verified
 autonomous gather transaction and repeated end-to-end resurrection recovery.
 Mining repeatability and uninterrupted full-cycle autonomy remain active
 limitations rather than completed claims.
@@ -40,28 +49,29 @@ limitations rather than completed claims.
 
 ```mermaid
 flowchart LR
-    A[Selected window pixels] --> B[Perception adapters]
-    V[Visible addon telemetry] --> B
-    B --> C[Timestamped observations]
-    C --> D[Temporal evidence and state]
-    D --> E[Input-owner arbitration]
-    E --> F[Pure and bounded controllers]
-    F --> G[Explicit commands]
-    G --> H[Keyboard and mouse adapters]
-    H --> A
-    C --> I[Telemetry and event buffer]
-    I --> J[Offline replay and tests]
-    J --> F
-    K[External offline maps and routes] --> L[Route generation]
-    L --> F
+    A[Selected-window pixels] --> B[SnapshotBuilder]
+    V[Visible protocol v2] --> B
+    B --> C[Immutable WorldSnapshot]
+    C --> D[Pure Supervisor]
+    D --> E[One domain controller]
+    E --> F[ControlIntent]
+    F --> G[Single InputExecutor]
+    G --> H[Win32 adapter in live mode]
+    C --> I[JSONL episode log]
+    I --> J[Deterministic replay]
+    J --> D
+    K[Offline maps and routes] --> L[Physical route compiler]
+    L --> D
 ```
 
 The key design rule is that an uncertain observation is not treated as an
 absence. High-consequence transitions require temporally stable, visible
 evidence, and every probing action has a timeout and attempt budget.
 
-See [Architecture](docs/ARCHITECTURE.md), [Technology overview](docs/TECHNOLOGY_OVERVIEW.md)
-and [Engineering evidence](docs/ENGINEERING_HIGHLIGHTS.md) for details.
+See [v0.9 architecture](docs/V09_ARCHITECTURE.md),
+[Architecture](docs/ARCHITECTURE.md),
+[Technology overview](docs/TECHNOLOGY_OVERVIEW.md) and
+[Engineering evidence](docs/ENGINEERING_HIGHLIGHTS.md) for details.
 
 ## Repository map
 
@@ -85,7 +95,8 @@ py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
-pytest -q
+python -m pytest -q
+screen-vision-agent --help
 python examples\offline_route_replay.py
 ```
 
@@ -106,7 +117,10 @@ accuracy, is under test.
 
 `config.yaml` is a safe portfolio configuration:
 
-- input is disabled;
+- `v09.default_mode` is `replay`;
+- `portfolio.allow_live_input` is `false`;
+- the v0.9 `live` command also requires an explicit enable flag and a fresh
+  matching preflight manifest;
 - route-live behavior is disabled;
 - mining, combat and recovery are disabled;
 - external maps, navmeshes and weights are not bundled.
@@ -131,8 +145,9 @@ redistributed. See [Portfolio scope](docs/PORTFOLIO_SCOPE.md) and
 
 ## Current limitations
 
-- The live coordinator still contains large modules that are being split into
-  observation, pure controller, execution and telemetry layers.
+- V0.9's deterministic runtime is implemented, but its latest route, guarded
+  mining transaction and post-fix combat behavior still need broader live
+  acceptance.
 - One verified mining transaction does not yet establish repeatability.
 - Full route coverage, multi-enemy combat and post-recovery route resume still
   require broader live evidence.

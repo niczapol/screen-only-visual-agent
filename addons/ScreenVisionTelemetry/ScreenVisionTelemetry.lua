@@ -125,7 +125,7 @@ headingText:SetText("H --.-")
 -- A fixed, visible binary strip avoids blocking OCR in the external controller.
 -- It still crosses the same screen-only boundary as the text coordinates.
 local telemetryFrame = CreateFrame("Frame", "ScreenVisionRuntimeTelemetryFrame", UIParent)
-telemetryFrame:SetWidth(180)
+telemetryFrame:SetWidth(316)
 telemetryFrame:SetHeight(16)
 telemetryFrame:SetPoint("TOP", UIParent, "TOP", 0, -42)
 telemetryFrame:SetFrameStrata("TOOLTIP")
@@ -142,9 +142,9 @@ local function CreateTelemetryTexture(xOffset, width, red, green, blue)
 end
 
 local telemetryLeftSentinel = CreateTelemetryTexture(4, 6, 1, 0, 1)
-local telemetryRightSentinel = CreateTelemetryTexture(170, 6, 0, 1, 1)
+local telemetryRightSentinel = CreateTelemetryTexture(306, 6, 0, 1, 1)
 local telemetryBits = {}
-for index = 1, 37 do
+for index = 1, 72 do
     telemetryBits[index] = CreateTelemetryTexture(14 + (index - 1) * 4, 4, 0.04, 0.04, 0.04)
 end
 telemetryFrame:Hide()
@@ -272,6 +272,8 @@ local nextZoneMapSyncAt = 0
 local telemetryX = nil
 local telemetryY = nil
 local telemetryHeading = nil
+local telemetryFrameSequence = 0
+local telemetryEventSequence = 0
 
 local function ResolveAstrolabe()
     if astrolabe ~= nil then
@@ -285,6 +287,24 @@ local function ResolveAstrolabe()
         astrolabe = library
     end
     return astrolabe
+end
+
+local function PreserveLastCombatCoordinates()
+    -- On this 3.3.5 client the map-position APIs can temporarily return no
+    -- value while the player is in combat.  Hiding the whole protocol strip in
+    -- that state also hides combat/status freshness exactly when the external
+    -- screen-only controller needs it most.  A last visible coordinate is safe
+    -- only while combat is visibly active: route/mining never own input then,
+    -- and the next noncombat update must obtain a fresh map coordinate or fail
+    -- closed normally.
+    if telemetryX == nil or telemetryY == nil then
+        return false
+    end
+    if type(UnitAffectingCombat) ~= "function" or not UnitAffectingCombat("player") then
+        return false
+    end
+    coordinateText:SetFormattedText("%.2f, %.2f", telemetryX * 100, telemetryY * 100)
+    return true
 end
 
 local function UpdateZoneCoordinates()
@@ -312,6 +332,9 @@ local function UpdateZoneCoordinates()
 
     local library = ResolveAstrolabe()
     if library == nil then
+        if PreserveLastCombatCoordinates() then
+            return
+        end
         coordinateText:SetText("--.--, --.--")
         telemetryX = nil
         telemetryY = nil
@@ -319,6 +342,9 @@ local function UpdateZoneCoordinates()
     end
     local ok, _continent, _zone, x, y = pcall(library.GetCurrentPlayerPosition, library)
     if not ok or x == nil or y == nil or (x <= 0 and y <= 0) then
+        if PreserveLastCombatCoordinates() then
+            return
+        end
         coordinateText:SetText("--.--, --.--")
         telemetryX = nil
         telemetryY = nil
@@ -355,6 +381,30 @@ local function SetTelemetryBit(index, enabled, red, green, blue)
     end
 end
 
+local function SetTelemetryValue(startIndex, bitCount, value, red, green, blue)
+    for bitIndex = 0, bitCount - 1 do
+        SetTelemetryBit(
+            startIndex + bitIndex,
+            math.floor(value / (2 ^ bitIndex)) % 2 == 1,
+            red,
+            green,
+            blue
+        )
+    end
+end
+
+local function RuntimeTelemetryChecksum(protocolVersion, frameSequence, xValue, yValue, headingValue, eventSequence, statusBits)
+    local checksum = protocolVersion + frameSequence + eventSequence + statusBits
+    checksum = checksum + (xValue % 256) + (math.floor(xValue / 256) % 256)
+    checksum = checksum + (yValue % 256) + (math.floor(yValue / 256) % 256)
+    checksum = checksum + (headingValue % 256) + (math.floor(headingValue / 256) % 256)
+    return checksum % 256
+end
+
+local function BumpTelemetryEventSequence()
+    telemetryEventSequence = (telemetryEventSequence + 1) % 256
+end
+
 local function UpdateRuntimeTelemetry()
     if telemetryX == nil or telemetryY == nil or telemetryHeading == nil then
         telemetryFrame:Hide()
@@ -364,14 +414,38 @@ local function UpdateRuntimeTelemetry()
     local xValue = math.max(0, math.min(10000, math.floor(telemetryX * 10000 + 0.5)))
     local yValue = math.max(0, math.min(10000, math.floor(telemetryY * 10000 + 0.5)))
     local headingValue = math.floor((telemetryHeading / 360) * 511 + 0.5) % 512
+    telemetryFrameSequence = (telemetryFrameSequence + 1) % 256
+    local statusBits = 0
+    if combatMarker:IsShown() then statusBits = statusBits + 1 end
+    if hitMarker:IsShown() then statusBits = statusBits + 2 end
+    if facingMarker:IsShown() then statusBits = statusBits + 4 end
+    if rangeMarker:IsShown() then statusBits = statusBits + 8 end
+    if attackerTargetMarker:IsShown() then statusBits = statusBits + 16 end
+    if lootOpenedMarker:IsShown() then statusBits = statusBits + 32 end
+    if combatLootPendingMarker:IsShown() then statusBits = statusBits + 64 end
+    if mountedMarker:IsShown() then statusBits = statusBits + 128 end
+    local protocolVersion = 2
+    local checksum = RuntimeTelemetryChecksum(
+        protocolVersion,
+        telemetryFrameSequence,
+        xValue,
+        yValue,
+        headingValue,
+        telemetryEventSequence,
+        statusBits
+    )
 
-    for bitIndex = 0, 13 do
-        SetTelemetryBit(bitIndex + 1, math.floor(xValue / (2 ^ bitIndex)) % 2 == 1, 1, 0, 0)
-        SetTelemetryBit(bitIndex + 15, math.floor(yValue / (2 ^ bitIndex)) % 2 == 1, 0, 1, 0)
-    end
-    for bitIndex = 0, 8 do
-        SetTelemetryBit(bitIndex + 29, math.floor(headingValue / (2 ^ bitIndex)) % 2 == 1, 0, 0, 1)
-    end
+    -- Protocol v2 is exactly 64 payload bits plus an 8-bit checksum:
+    -- version(3), frame sequence(8), X(14), Y(14), heading(9),
+    -- event sequence(8), status(8), checksum(8).
+    SetTelemetryValue(1, 3, protocolVersion, 1, 0, 0)
+    SetTelemetryValue(4, 8, telemetryFrameSequence, 1, 0, 0)
+    SetTelemetryValue(12, 14, xValue, 1, 0, 0)
+    SetTelemetryValue(26, 14, yValue, 0, 1, 0)
+    SetTelemetryValue(40, 9, headingValue, 0, 0, 1)
+    SetTelemetryValue(49, 8, telemetryEventSequence, 1, 0, 0)
+    SetTelemetryValue(57, 8, statusBits, 0, 1, 0)
+    SetTelemetryValue(65, 8, checksum, 1, 0, 0)
     telemetryFrame:Show()
 end
 
@@ -560,18 +634,25 @@ end
 local function HandleCombatLog(...)
     local _timestamp, eventType, sourceGUID, _sourceName, _sourceFlags, destGUID = ...
     local playerGUID = UnitGUID("player")
+    local sequenceChanged = false
     if sourceGUID == UnitGUID("player") and IsDamageEvent(eventType) then
         FlashOutcome(hitMarker, HIT_VISIBLE_SECONDS)
+        sequenceChanged = true
     end
     if destGUID == playerGUID and sourceGUID ~= nil and IsIncomingAttackEvent(eventType) then
         activeAttackers[sourceGUID] = GetTime() + ATTACKER_VISIBLE_SECONDS
+        sequenceChanged = true
     elseif eventType == "UNIT_DIED" and destGUID ~= nil then
         activeAttackers[destGUID] = nil
+        sequenceChanged = true
         if (destGUID == currentTargetGUID and currentTargetHostile)
             or (destGUID == previousTargetGUID and previousTargetHostile) then
             pendingCombatLootGUID = destGUID
             pendingCombatLootDeadline = GetTime() + COMBAT_LOOT_PENDING_SECONDS
         end
+    end
+    if sequenceChanged then
+        BumpTelemetryEventSequence()
     end
     UpdateAttackerTargetMarker()
     UpdateAttackerCountMarker()
@@ -584,12 +665,14 @@ local function HandleUiError(message)
         or string.find(normalized, "in front", 1, true)
         or string.find(normalized, "facing", 1, true) then
         FlashOutcome(facingMarker, ERROR_VISIBLE_SECONDS)
+        BumpTelemetryEventSequence()
         return
     end
     if string.find(normalized, "out of range", 1, true)
         or string.find(normalized, "too far away", 1, true)
         or string.find(normalized, "closer", 1, true) then
         FlashOutcome(rangeMarker, ERROR_VISIBLE_SECONDS)
+        BumpTelemetryEventSequence()
     end
 end
 
@@ -609,10 +692,14 @@ events:SetScript("OnEvent", function(_self, event, ...)
         HandleUiError(...)
     elseif event == "LOOT_OPENED" then
         FlashMarker(lootOpenedMarker, LOOT_VISIBLE_SECONDS)
+        BumpTelemetryEventSequence()
         pendingCombatLootGUID = nil
         pendingCombatLootDeadline = 0
         UpdateCombatLootPendingMarker()
     else
+        if event == "PLAYER_REGEN_DISABLED" or event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_DEAD" then
+            BumpTelemetryEventSequence()
+        end
         if event == "PLAYER_ENTERING_WORLD" then
             activeAttackers = {}
             currentTargetGUID = nil
@@ -676,8 +763,8 @@ events:SetScript("OnUpdate", function(_self, elapsed)
     end
 end)
 
-SLASH_SCREENVISIONCOMBATMARKER1 = "/svatest"
-SlashCmdList.SCREENVISIONCOMBATMARKER = function(message)
+SLASH_SCREENVISIONTELEMETRY1 = "/svtest"
+SlashCmdList.SCREENVISIONTELEMETRY = function(message)
     local command = string.lower(message or "")
     if command == "on" then
         forcedState = true

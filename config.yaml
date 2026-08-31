@@ -12,12 +12,132 @@ capture:
   require_foreground: true
 
 input:
+  # A visible cursor move must settle before the click can be authorized.
+  cursor_settle_seconds: 0.12
   backend: post_message
 
 screen:
   reference_width: 2560
   reference_height: 1440
   scale_regions: true
+
+# Deterministic v0.9 runtime. Replay is the only default mode; the independent
+# portfolio.allow_live_input gate above remains false in the committed config.
+v09:
+  enabled: true
+  default_mode: replay
+  protocol_version: 2
+  freshness:
+    critical_seconds: 0.50
+    operational_seconds: 0.75
+    heavy_sensor_seconds: 1.50
+  performance:
+    control_hz: 10.0
+    critical_preemption_p95_ms: 150.0
+    controller_p95_ms: 5.0
+    max_frame_backlog: 1
+    idle_ore_scan_interval_frames: 2
+    shutdown_guard_quiet_seconds: 5.0
+    shutdown_guard_max_seconds: 600.0
+  zone:
+    zone_id: 162
+    width_yards: 6900.0
+    height_yards: 4600.0
+  navigation:
+    lookahead_min_yards: 10.0
+    lookahead_cruise_yards: 34.0
+    lookahead_max_yards: 55.0
+    corridor_radius_yards: 18.0
+    turn_engage_degrees: 18.0
+    turn_release_degrees: 9.0
+    pivot_degrees: 45.0
+    yaw_pixels_per_degree: 4.61
+    yaw_pixels_per_second: 420.0
+    moving_drag_max_seconds: 0.10
+    pivot_drag_max_seconds: 0.35
+    turn_reversal_guard_seconds: 0.35
+    stall_soft_seconds: 3.0
+    stall_hard_seconds: 12.0
+    stall_min_progress_yards: 1.5
+    mounted_escape_seconds: 12.0
+    mounted_escape_attacker_count: 2
+  mining:
+    acquisition_radius_yards: 24.0
+    braking_radius_yards: 9.0
+    capture_radius_yards: 4.5
+    centered_radius_pixels: 6.0
+    minimap_sensor_radius_pixels: 116.76
+    minimap_radius_x_yards: 161.46
+    minimap_radius_y_yards: 155.48
+    live_marker_weight: 0.80
+    max_fusion_disagreement_yards: 45.0
+    target_max_age_seconds: 1.0
+    max_approach_seconds: 20.0
+    visual_search_seconds: 5.0
+    verify_seconds: 6.0
+    out_of_range_recovery_seconds: 0.35
+    max_out_of_range_recoveries: 1
+    identity_confirm_frames: 2
+    identity_timeout_seconds: 1.20
+    marker_track_max_jump_pixels: 24.0
+    database_match_radius_yards: 45.0
+    require_access_plan: true
+    access_attachment_radius_yards: 25.0
+    failure_suppression_seconds: 30.0
+  combat:
+    attack_key: E
+    attack_interval_seconds: 0.20
+    key_tap_seconds: 0.06
+    priority_key: X
+    priority_interval_seconds: 15.0
+    aligned_key: Q
+    aligned_interval_seconds: 5.0
+    emergency_key: F
+    emergency_hp_fraction: 0.20
+    emergency_interval_seconds: 15.0
+    emergency_followup_key: V
+    emergency_followup_gap_seconds: 0.12
+    heal_key: V
+    heal_hp_fraction: 0.50
+    heal_interval_seconds: 8.0
+    face_search_cooldown_seconds: 1.0
+    face_search_drag_seconds: 0.15
+    bearing_lock_seconds: 8.0
+  recovery:
+    target_key: C
+    interact_key: G
+    approach_key: W
+    key_tap_seconds: 0.06
+    click_seconds: 0.12
+    target_interval_seconds: 0.35
+    interact_interval_seconds: 0.45
+    approach_seconds: 0.75
+    approach_settle_seconds: 0.90
+    max_approach_attempts: 12
+    healer_anchor_activation_radius_yards: 100.0
+    healer_interact_radius_yards: 6.0
+    healer_anchors:
+      - {x: 49.40, y: 59.00}
+      - {x: 63.60, y: 49.40}
+      - {x: 69.00, y: 40.70}
+      - {x: 53.90, y: 28.80}
+      - {x: 36.30, y: 69.00}
+      - {x: 40.50, y: 40.70}
+    release_retry_seconds: 1.5
+    release_timeout_seconds: 12.0
+    healer_search_timeout_seconds: 60.0
+    dialog_timeout_seconds: 10.0
+    max_release_attempts: 4
+    max_target_attempts: 120
+    max_interact_attempts: 4
+  mounting:
+    enabled: true
+    key: "1"
+    cast_seconds: 2.0
+    retry_seconds: 4.0
+    max_attempts_per_cycle: 2
+    cycle_cooldown_seconds: 10.0
+    post_combat_settle_seconds: 3.0
 
 minimap:
   x: 2267
@@ -37,7 +157,7 @@ runtime_markers:
   enabled: true
   telemetry:
     enabled: true
-    region: {x: 1120, y: 45, width: 320, height: 50}
+    region: {x: 700, y: 45, width: 1160, height: 50}
     bit_threshold: 150
   minimap_ore_tooltip:
     enabled: true
@@ -264,7 +384,7 @@ route:
   locations: [162]
   ores: []
   mode: cyclic
-  database_path: data/routes/generated/tanaris_terrain_coverage_cycle_v18_rail.json
+  database_path: data/routes/generated/tanaris_terrain_coverage_cycle_v19_rail.json
   follow_route_loop: true
   polyline_following:
     enabled: true

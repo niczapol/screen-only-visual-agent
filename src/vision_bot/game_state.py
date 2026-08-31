@@ -21,8 +21,20 @@ def detect_game_state(frame: np.ndarray) -> GameState:
         return GameState(False, 0, False)
 
     height, width = frame.shape[:2]
-    ghost_visual = _detect_ghost_visual(frame)
     alive_health_bar = _detect_alive_player_health_bar(frame)
+    if alive_health_bar:
+        # A saturated visible player-health fill is authoritative live-state
+        # evidence. Skip the large world-palette percentiles and ghost-button
+        # masks on the normal path; they only disambiguate an empty health bar.
+        return GameState(
+            death_or_blocking_modal=False,
+            red_button_count=0,
+            ghost_visual=False,
+            ghost_button_count=0,
+            alive_health_bar=True,
+            dismissable_modal_click=None,
+        )
+    ghost_visual = _detect_ghost_visual(frame)
     ghost_button_count = _count_ghost_action_buttons(frame)
     # Startup popups are intentionally ignored. Their button area overlaps the
     # action bar, so unattended dismissal is less safe than leaving them open.

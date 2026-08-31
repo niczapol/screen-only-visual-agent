@@ -23,7 +23,7 @@ def test_addon_exposes_capped_visible_unique_attacker_count():
     assert "for _guid, deadline in pairs(activeAttackers) do" in source
     assert "attackerCountMarker.markerTexture:SetTexture(1, 0.55, 0, 1)" in source
     assert 'command == "threat3"' in source
-    assert "## Version: 0.4.5" in ADDON_MANIFEST.read_text(
+    assert "## Version: 0.5.1" in ADDON_MANIFEST.read_text(
         encoding="utf-8"
     )
 
@@ -33,7 +33,7 @@ def test_addon_keeps_hit_telemetry_but_does_not_hide_new_ui_errors():
 
     assert "local HIT_VISIBLE_SECONDS = 2.00" in source
     assert "if HitMarkerIsActive() then" not in source
-    assert "## Version: 0.4.5" in ADDON_MANIFEST.read_text(encoding="utf-8")
+    assert "## Version: 0.5.1" in ADDON_MANIFEST.read_text(encoding="utf-8")
 
 
 def test_addon_exposes_player_heading_and_camera_reset_binding():
@@ -51,7 +51,8 @@ def test_addon_exposes_visible_coordinate_and_heading_telemetry_strip():
     assert '"ScreenVisionRuntimeTelemetryFrame"' in source
     assert 'GetPlayerMapPosition, "player"' in source
     assert "UpdateRuntimeTelemetry()" in source
-    assert "for bitIndex = 0, 13 do" in source
+    assert "local protocolVersion = 2" in source
+    assert "Protocol v2 is exactly 64 payload bits plus an 8-bit checksum" in source
 
 
 def test_addon_relays_only_native_minimap_ore_tooltips_as_visible_telemetry():

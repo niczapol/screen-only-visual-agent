@@ -29,6 +29,7 @@ KEY_CODES = {
     **{chr(code): code for code in range(ord("A"), ord("Z") + 1)},
     **{str(digit): ord(str(digit)) for digit in range(10)},
     "TAB": 0x09,
+    "ENTER": 0x0D,
     "ESC": 0x1B,
     "ESCAPE": 0x1B,
     "F6": 0x75,
@@ -37,6 +38,7 @@ KEY_CODES = {
     "F9": 0x78,
     "SHIFT": 0x10,
     "SPACE": 0x20,
+    "/": 0xBF,
 }
 
 MOVEMENT_KEYS = ("W", "A", "S", "D")
@@ -213,6 +215,43 @@ class MouseController:
     def move_to(self, screen_x: int, screen_y: int) -> None:
         with self._lock:
             ctypes.windll.user32.SetCursorPos(int(screen_x), int(screen_y))
+
+    def button_down(self, button: str) -> None:
+        """Non-blocking primitive used only by the v0.9 input executor."""
+        normalized = str(button).strip().lower()
+        flags = {
+            "left": MOUSEEVENTF_LEFTDOWN,
+            "right": MOUSEEVENTF_RIGHTDOWN,
+        }.get(normalized)
+        if flags is None:
+            raise ValueError(f"unsupported mouse button: {button}")
+        with self._lock:
+            _mouse_event(flags)
+
+    def button_up(self, button: str) -> None:
+        """Release a mouse button without sleeping."""
+        normalized = str(button).strip().lower()
+        flags = {
+            "left": MOUSEEVENTF_LEFTUP,
+            "right": MOUSEEVENTF_RIGHTUP,
+        }.get(normalized)
+        if flags is None:
+            raise ValueError(f"unsupported mouse button: {button}")
+        with self._lock:
+            _mouse_event(flags)
+
+    def move_relative(self, delta_x: int, delta_y: int = 0) -> None:
+        """Move the cursor/mouselook by one non-blocking executor step."""
+        with self._lock:
+            _send_input(
+                [
+                    _make_mouse_input(
+                        MOUSEEVENTF_MOVE,
+                        dx=int(delta_x),
+                        dy=int(delta_y),
+                    )
+                ]
+            )
 
     def left_click(self, duration: float = 0.05) -> None:
         with self._lock:

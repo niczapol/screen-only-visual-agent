@@ -12,6 +12,7 @@ from vision_bot.runtime_markers import (
     detect_spirit_healer_target_marker,
     read_minimap_ore_tooltip_telemetry,
     read_runtime_telemetry,
+    _runtime_telemetry_checksum,
 )
 
 
@@ -189,15 +190,36 @@ def _draw_telemetry_value(frame, value, start_index, bit_count, color):
 
 
 def test_runtime_telemetry_decodes_visible_coordinate_and_heading_bits():
-    frame = np.zeros((24, 200, 3), dtype=np.uint8)
+    frame = np.zeros((24, 320, 3), dtype=np.uint8)
     frame[6:18, 4:10] = (255, 0, 255)
-    frame[6:18, 170:176] = (255, 255, 0)
-    _draw_telemetry_value(frame, 5388, 0, 14, (0, 0, 255))
-    _draw_telemetry_value(frame, 2874, 14, 14, (0, 255, 0))
-    _draw_telemetry_value(frame, 255, 28, 9, (255, 0, 0))
+    frame[6:18, 306:312] = (255, 255, 0)
+    protocol = 2
+    frame_sequence = 17
+    x_value = 5388
+    y_value = 2874
+    heading_value = 255
+    event_sequence = 9
+    status_bits = 0b10010011
+    checksum = _runtime_telemetry_checksum(
+        protocol,
+        frame_sequence,
+        x_value,
+        y_value,
+        heading_value,
+        event_sequence,
+        status_bits,
+    )
+    _draw_telemetry_value(frame, protocol, 0, 3, (0, 0, 255))
+    _draw_telemetry_value(frame, frame_sequence, 3, 8, (0, 0, 255))
+    _draw_telemetry_value(frame, x_value, 11, 14, (0, 0, 255))
+    _draw_telemetry_value(frame, y_value, 25, 14, (0, 255, 0))
+    _draw_telemetry_value(frame, heading_value, 39, 9, (255, 0, 0))
+    _draw_telemetry_value(frame, event_sequence, 48, 8, (0, 0, 255))
+    _draw_telemetry_value(frame, status_bits, 56, 8, (0, 255, 0))
+    _draw_telemetry_value(frame, checksum, 64, 8, (0, 0, 255))
     config = {
         "screen": {
-            "reference_width": 200,
+            "reference_width": 320,
             "reference_height": 24,
             "scale_regions": False,
         },
@@ -205,7 +227,7 @@ def test_runtime_telemetry_decodes_visible_coordinate_and_heading_bits():
             "enabled": True,
             "telemetry": {
                 "enabled": True,
-                "region": {"x": 0, "y": 0, "width": 200, "height": 24},
+                "region": {"x": 0, "y": 0, "width": 320, "height": 24},
                 "bit_threshold": 150,
             },
         },
@@ -218,10 +240,91 @@ def test_runtime_telemetry_decodes_visible_coordinate_and_heading_bits():
     assert telemetry.x == 53.88
     assert telemetry.y == 28.74
     assert abs(telemetry.heading_degrees - 179.65) < 0.1
+    assert telemetry.protocol_version == 2
+    assert telemetry.frame_sequence == 17
+    assert telemetry.event_sequence == 9
+    assert telemetry.status_bits == status_bits
+
+
+def test_runtime_telemetry_decodes_centered_strip_after_ui_scale_change():
+    strip = np.zeros((24, 320, 3), dtype=np.uint8)
+    strip[6:18, 4:10] = (255, 0, 255)
+    strip[6:18, 306:312] = (255, 255, 0)
+    protocol = 2
+    frame_sequence = 188
+    x_value = 5165
+    y_value = 2606
+    heading_value = 63
+    event_sequence = 0
+    status_bits = 1 << 7
+    checksum = _runtime_telemetry_checksum(
+        protocol,
+        frame_sequence,
+        x_value,
+        y_value,
+        heading_value,
+        event_sequence,
+        status_bits,
+    )
+    _draw_telemetry_value(strip, protocol, 0, 3, (0, 0, 255))
+    _draw_telemetry_value(strip, frame_sequence, 3, 8, (0, 0, 255))
+    _draw_telemetry_value(strip, x_value, 11, 14, (0, 0, 255))
+    _draw_telemetry_value(strip, y_value, 25, 14, (0, 255, 0))
+    _draw_telemetry_value(strip, heading_value, 39, 9, (255, 0, 0))
+    _draw_telemetry_value(strip, event_sequence, 48, 8, (0, 0, 255))
+    _draw_telemetry_value(strip, status_bits, 56, 8, (0, 255, 0))
+    _draw_telemetry_value(strip, checksum, 64, 8, (0, 0, 255))
+
+    scaled = cv2.resize(strip, (506, 38), interpolation=cv2.INTER_NEAREST)
+    frame = np.zeros((1440, 2560, 3), dtype=np.uint8)
+    frame[60:98, 1027:1533] = scaled
+    config = {
+        "screen": {
+            "reference_width": 2560,
+            "reference_height": 1440,
+            "scale_regions": True,
+        },
+        "v09": {"protocol_version": 2},
+        "runtime_markers": {
+            "enabled": True,
+            "telemetry": {"enabled": True, "bit_threshold": 150},
+        },
+    }
+
+    telemetry = read_runtime_telemetry(frame, config)
+
+    assert telemetry is not None
+    assert (telemetry.x, telemetry.y) == (51.65, 26.06)
+    assert telemetry.frame_sequence == 188
+    assert telemetry.status_bits == 1 << 7
+
+
+def test_runtime_telemetry_fails_closed_on_checksum_mismatch():
+    frame = np.zeros((24, 320, 3), dtype=np.uint8)
+    frame[6:18, 4:10] = (255, 0, 255)
+    frame[6:18, 306:312] = (255, 255, 0)
+    _draw_telemetry_value(frame, 2, 0, 3, (0, 0, 255))
+    _draw_telemetry_value(frame, 1, 3, 8, (0, 0, 255))
+    _draw_telemetry_value(frame, 5000, 11, 14, (0, 0, 255))
+    _draw_telemetry_value(frame, 5000, 25, 14, (0, 255, 0))
+    _draw_telemetry_value(frame, 100, 39, 9, (255, 0, 0))
+    config = {
+        "screen": {"scale_regions": False},
+        "v09": {"protocol_version": 2},
+        "runtime_markers": {
+            "enabled": True,
+            "telemetry": {
+                "enabled": True,
+                "region": {"x": 0, "y": 0, "width": 320, "height": 24},
+            },
+        },
+    }
+
+    assert read_runtime_telemetry(frame, config) is None
 
 
 def test_runtime_telemetry_fails_closed_without_both_sentinels():
-    frame = np.zeros((24, 200, 3), dtype=np.uint8)
+    frame = np.zeros((24, 320, 3), dtype=np.uint8)
     frame[6:18, 4:10] = (255, 0, 255)
 
     assert read_runtime_telemetry(
@@ -232,7 +335,7 @@ def test_runtime_telemetry_fails_closed_without_both_sentinels():
                 "enabled": True,
                 "telemetry": {
                     "enabled": True,
-                    "region": {"x": 0, "y": 0, "width": 200, "height": 24},
+                    "region": {"x": 0, "y": 0, "width": 320, "height": 24},
                 },
             },
         },
